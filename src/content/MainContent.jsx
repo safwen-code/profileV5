@@ -3,8 +3,8 @@ import { Box, Container, Grid } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import Navbar from '../layout/Navbar'
-import Aboutme from '../layout/Aboutme'
-import Containers from './Containers'
+import AboutMe from './about/AboutMe'
+import Containers from './Containers.jsx'
 
 //define item
 const Item = styled(Paper)(({ theme }) => ({
@@ -29,7 +29,7 @@ const MainContent = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
               <Item sx={{ borderRadius: '25px' }}>
-                <Aboutme />
+                <AboutMe />
               </Item>
             </Grid>
             <Grid item xs={12} md={8}>
