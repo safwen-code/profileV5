@@ -65,7 +65,7 @@ const Navbar = ({ activeNavItem, setActiveNavItem }) => {
   return (
     <Box
       mt={2}
-      style={{ position: 'sticky', top: 0, zIndex: 999, margin: '20px' }}
+      style={{ position: 'sticky', top: 0, zIndex: 999, margin: '40px' }}
     >
       <AppBar position="static" sx={{ borderRadius: 2 }}>
         <Container maxWidth="xl">
