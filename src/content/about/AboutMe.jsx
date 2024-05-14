@@ -31,8 +31,8 @@ import { IconButton } from '@mui/material'
 
 const style = {
   width: '100%',
-  maxWidth: 360,
-  bgcolor: 'background.paper',
+  // maxWidth: 360,
+  bgcolor: '#32012F',
 }
 
 let styles = {
@@ -64,165 +64,202 @@ const AboutMe = () => {
     window.open(whatsappCallLink, '_blank')
   }
   return (
-    <>
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Avatar sx={{ bgcolor: 'info.main', width: 50, height: 50 }}>DS</Avatar>
+    <Box sx={{ position: 'relative', paddingY: 7 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          position: 'absolute',
+          top: -50,
+          left: 0,
+          right: 0,
+          zIndex: 3,
+        }}
+      >
+        <Avatar sx={{ height: 100, width: 100 }}>DS</Avatar>
       </Box>
-      <List sx={style} component="div" aria-label="mailbox folders">
-        <ListItem>
-          <ListItemText
+
+      <Box sx={{ zIndex: 1, margin: 2 }}>
+        <List sx={style} component="div" aria-label="mailbox folders">
+          <ListItem>
+            <ListItemText
+              sx={{
+                color: '#5c6bc0',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+              primary={
+                <Typography
+                  variant="h1"
+                  style={styles}
+                  sx={{ color: '#E2DFD0' }}
+                >
+                  Djebbi Safwen
+                </Typography>
+              }
+            />
+          </ListItem>
+          <Divider sx={{ marginTop: '10px', borderColor: '#E2DFD0' }} />
+          <ListItem divider>
+            <ListItemText
+              sx={{
+                color: '#E2DFD0',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+              style={{ fontFamily: 'cursive' }}
+              primary={
+                <Typewriter
+                  options={{
+                    strings: [
+                      'FullStack Developer',
+                      'Web Developer',
+                      'Software Engineer',
+                      'Mobile Developer',
+                    ],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
+              }
+            />
+          </ListItem>
+          <Divider sx={{ borderColor: '#E2DFD0' }} />
+          <ListItem
             sx={{
-              color: '#5c6bc0',
               display: 'flex',
               justifyContent: 'center',
+              marginTop: '10px',
             }}
-            primary={
-              <Typography variant="h1" style={styles} sx={{ color: '#212121' }}>
-                Djebbi Safwen
-              </Typography>
-            }
-          />
-        </ListItem>
-        <Divider sx={{ marginTop: '10px' }} />
-        <ListItem divider>
-          <ListItemText
-            sx={{
-              color: '#616161',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-            style={{ fontFamily: 'cursive' }}
-            primary={
-              <Typewriter
-                options={{
-                  strings: [
-                    'FullStack Developper',
-                    'Web Developper',
-                    'Software Engineer',
-                    'Mobile Developepr',
-                  ],
-                  autoStart: true,
-                  loop: true,
+          >
+            <Card sx={{ marginRight: '5px' }}>
+              <IconButton href="https://github.com/safwen-code" target="_blank">
+                <GitHubIcon sx={{ color: '#212121' }} fontSize="medium" />
+              </IconButton>
+            </Card>
+            <Divider orientation="vertical" flexItem />
+            <Card sx={{ marginRight: '5px', marginLeft: '5px' }}>
+              <IconButton
+                href="https://www.linkedin.com/in/safwen-djebbi-5a996b204/"
+                target="_blank"
+              >
+                <LinkedInIcon sx={{ color: '#0e76a8' }} fontSize="medium" />
+              </IconButton>
+            </Card>
+            <Divider orientation="vertical" flexItem />
+            <Card sx={{ marginLeft: '5px' }}>
+              <IconButton
+                href="https://www.facebook.com/profile.php?id=100078734872887"
+                target="_blank"
+              >
+                <FacebookIcon sx={{ color: '#1877f2' }} fontSize="medium" />
+              </IconButton>
+            </Card>
+          </ListItem>
+        </List>
+        <List
+          sx={{
+            border: 1,
+            borderColor: 'secondary.main',
+            borderRadius: '10px',
+            marginTop: '10px',
+            backgroundColor: '#49243E',
+          }}
+        >
+          <ListItem disablePadding>
+            <ListItemButton onClick={handleWhatsAppCall}>
+              <ListItemIcon>
+                <OnDeviceTrainingIcon
+                  color="info"
+                  sx={{ marginRight: '5px', marginLeft: '5px' }}
+                />
+              </ListItemIcon>
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{ borderColor: '#DDDDDD', marginRight: '20px' }}
+              />
+              <ListItemText
+                primary="+216 26 706 437"
+                sx={{ color: '#DDDDDD' }}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <MailOutlineIcon
+                  color="primary"
+                  sx={{ marginRight: '5px', marginLeft: '5px' }}
+                />
+              </ListItemIcon>
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{ borderColor: '#DDDDDD', marginRight: '20px' }}
+              />
+              <ListItemText
+                primary="safwendjebbi1234@gmail.com"
+                sx={{
+                  color: '#DDDDDD',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  minWidth: 0,
                 }}
               />
-            }
-          />
-        </ListItem>
-        <Divider />
-        <ListItem
-          sx={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <PinDropIcon
+                  color="secondary"
+                  sx={{ marginRight: '5px', marginLeft: '5px' }}
+                />
+              </ListItemIcon>
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{ borderColor: '#DDDDDD', marginRight: '20px' }}
+              />
+              <ListItemText
+                primary="Tunisie, Ben Arous"
+                sx={{ color: '#DDDDDD' }}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <CakeIcon color="warning" sx={{ marginLeft: '5px' }} />
+              </ListItemIcon>
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{ borderColor: '#DDDDDD', marginRight: '20px' }}
+              />
+              <ListItemText primary="20/08/1994" sx={{ color: '#DDDDDD' }} />
+            </ListItemButton>
+          </ListItem>
+        </List>
+        <Button
+          variant="outlined"
+          sx={{
+            marginTop: '20px',
+            marginBottom: '20px',
+            height: '50px',
+            color: '#D6DAC8',
+            borderRadius: '10px',
+            borderColor: '#D6DAC8',
+          }}
+          endIcon={<CloudDownloadIcon />}
+          // onClick={() => DownloadCV()}
         >
-          <Card sx={{ marginRight: '5px' }}>
-            <IconButton href="https://github.com/safwen-code" target="_blank">
-              <GitHubIcon color="#212121" fontSize="miduim" />
-            </IconButton>
-          </Card>
-          <Divider orientation="vertical" flexItem></Divider>
-          <Card sx={{ marginRight: '5px', marginLeft: '5px' }}>
-            <IconButton
-              href="https://www.linkedin.com/in/safwen-djebbi-5a996b204/"
-              target="_blank"
-            >
-              <LinkedInIcon color="info" fontSize="miduim" />
-            </IconButton>
-          </Card>
-          <Divider orientation="vertical" flexItem></Divider>
-          <Card sx={{ marginLeft: '5px' }}>
-            <IconButton
-              href="https://www.facebook.com/profile.php?id=100078734872887"
-              target="_blank"
-            >
-              <FacebookIcon color="primary" fontSize="miduim" />
-            </IconButton>
-          </Card>
-        </ListItem>
-      </List>
-      <List
-        sx={{
-          border: 1,
-          borderColor: 'secondary.main',
-          borderRadius: '10px',
-          marginTop: '10px',
-          backgroundColor: '#f5f5f5',
-          wrap: 'nowrap',
-        }}
-      >
-        <ListItem disablePadding>
-          <ListItemButton onClick={handleWhatsAppCall}>
-            <ListItemIcon>
-              <OnDeviceTrainingIcon
-                color="info"
-                sx={{ marginRight: '5px', marginLeft: '5px' }}
-              />
-              <Divider orientation="vertical" flexItem></Divider>
-            </ListItemIcon>
-
-            <ListItemText primary="+216 26 706 437" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding sx={{ overflow: 'auto' }}>
-          <ListItemButton>
-            <ListItemIcon>
-              <MailOutlineIcon
-                color="primary"
-                sx={{ marginRight: '5px', marginLeft: '5px' }}
-              />
-              <Divider orientation="vertical" flexItem></Divider>
-            </ListItemIcon>
-
-            <ListItemText
-              primary="safwendjebbi1234@gmail.com"
-              sx={{
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                minWidth: 0,
-              }}
-            ></ListItemText>
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <PinDropIcon
-                color="secondary"
-                sx={{ marginRight: '5px', marginLeft: '5px' }}
-              />
-              <Divider orientation="vertical" flexItem></Divider>
-            </ListItemIcon>
-
-            <ListItemText primary="tunisie , ben arous" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <CakeIcon
-                color="warning"
-                sx={{ marginRight: '5px', marginLeft: '5px' }}
-              />
-              <Divider orientation="vertical" flexItem></Divider>
-            </ListItemIcon>
-
-            <ListItemText primary="20/08/1994" />
-          </ListItemButton>
-        </ListItem>
-      </List>
-      <Button
-        variant="outlined"
-        sx={{
-          marginTop: '20px',
-          marginBottom: '20px ',
-          height: '50px ',
-          color: '#311b92',
-          borderRadius: '10px',
-        }}
-        endIcon={<CloudDownloadIcon />}
-        // onClick={() => DownloadCV()}
-      >
-        telecharge CV
-      </Button>
-    </>
+          Télécharger CV
+        </Button>
+      </Box>
+    </Box>
   )
 }
 
