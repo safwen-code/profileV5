@@ -1,5 +1,8 @@
 import React from 'react'
 import { Grid, Divider } from '@mui/material'
+import Stepper from './Stepper.jsx'
+import StepperWork from './StepperWork.jsx'
+import StepperStage from './StepperStage.jsx'
 // import { deepOrange } from '@mui/material/colors'
 // import gomy from '../../images/gomy.png'
 // import iset from '../../images/iset.jpg'
@@ -28,8 +31,8 @@ import { Grid, Divider } from '@mui/material'
 // const styletitle = {
 //   fontZize: '2rem',
 //   fontWeight: 'bold',
-//   color: '#3f50b5',
-//   marginBottom: '10px',
+//   color: '#3f50b5  ',
+//   marginBottom: '10x px',
 //   textAlign: 'center',
 //   textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
 // }
@@ -60,13 +63,13 @@ const EduExp = () => {
       <Grid container spacing={2}>
         {' '}
         <Grid item xs={12} sm={6}>
-          {/* <Stepper /> */}
+          <Stepper />
         </Grid>
         <Grid item xs={12} sm={6}>
-          {/* <StepperWork /> */}
+          <StepperWork />
         </Grid>
         <Grid item xs={12} sm={6}>
-          {/* <StepperStage /> */}
+          <StepperStage />
         </Grid>
         <Grid item xs={12} sm={6}>
           {/* <Khowledge /> */}

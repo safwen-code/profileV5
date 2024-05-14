@@ -42,6 +42,7 @@ const StepperWork = () => {
                 processus commercial{' '}
               </ListItem>
             </List>
+            x{' '}
           </StepContent>
         </Step>
 

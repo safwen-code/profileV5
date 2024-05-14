@@ -1,7 +1,7 @@
 import React from 'react'
 import Description from './about/Description.jsx'
 import Project from './project/Project.jsx'
-import EduExp from './Edu&Exp/EduExp.jsx'
+import EduExp from './EduandExp/EduExp.jsx'
 import Skills from './skills/Skills.jsx'
 import Contact from './contact/Contact.jsx'
 

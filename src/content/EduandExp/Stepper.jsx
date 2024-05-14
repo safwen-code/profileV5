@@ -18,7 +18,12 @@ const VerticalLinearStepper = () => {
     <>
       <Stepper
         orientation="vertical"
-        // activeStep={0} /* Specify the active step index here */
+        sx={{
+          '& .MuiStepConnector-line': {
+            borderColor: '#2196f3 !important',
+          },
+        }}
+        // activeStep={0}
       >
         <Step key={0} active={1}>
           <StepLabel StepIconComponent={ModelTrainingIcon}>
@@ -73,7 +78,7 @@ const VerticalLinearStepper = () => {
             </List>
           </StepContent>
         </Step>
-        <Step key={1} active={1}>
+        <Step key={2} active={1}>
           <StepLabel StepIconComponent={SchoolOutlinedIcon}>
             Baccalaureate informatique <Chip label="October 2013, 2014" />
           </StepLabel>

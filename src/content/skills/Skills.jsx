@@ -4,12 +4,13 @@ import 'react-circular-progressbar/dist/styles.css'
 import { motion } from 'framer-motion'
 import { Card, Divider, Typography, Grid } from '@mui/material'
 import LinearProgress from '@mui/material/LinearProgress'
+import './skill.css'
+
 // import Swip from './Swip'
 
 // import ang from '../../images/ang.jpg'
 // import react from '../../images/react.jpg'
 // import vue from '../../images/vue.png'
-// import './skillsmai.css'
 
 const gridItemVariants = {
   hidden: { opacity: 0, y: 20 },

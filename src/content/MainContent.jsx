@@ -26,14 +26,19 @@ const MainContent = () => {
           setActiveNavItem={setActiveNavItem}
         />
         <Box sx={{ flexGrow: 1 }} p={1} mt={1}>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} component="aside">
             <Grid item xs={12} md={4}>
-              <Item sx={{ borderRadius: '25px' }}>
+              <Item sx={{ borderRadius: '25px', bgcolor: '#32012F' }}>
                 <AboutMe />
               </Item>
             </Grid>
-            <Grid item xs={12} md={8}>
-              <Item sx={{ borderRadius: '25px' }}>
+            <Grid
+              item
+              xs={12}
+              md={8}
+              height={`${activeNavItem === 'contact' && '35rem'}`}
+            >
+              <Item component="section" sx={{ borderRadius: '25px' }}>
                 {' '}
                 <Containers activeNavItem={activeNavItem} />{' '}
               </Item>
