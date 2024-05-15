@@ -67,7 +67,7 @@ const Navbar = ({ activeNavItem, setActiveNavItem }) => {
       mt={2}
       style={{ position: 'sticky', top: 0, zIndex: 999, margin: '40px' }}
     >
-      <AppBar position="static" sx={{ borderRadius: 2 }}>
+      <AppBar position="static" sx={{ borderRadius: 2, bgcolor: '#32012F' }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Avatar
