@@ -58,11 +58,12 @@ const Description = () => {
           ml={5}
           mt={1}
         >
-          Développeur Full Stack JS,PHP passionnée par l’univer du web et dotée
-          d’une curiosité pour cette metier.Polyvalent et forte de 4 ans
-          d’experience, je me suis spécialisée dans le développement frontend
-          ansi que le backend. Je suis spécialisée sur les frameworks React ,
-          React native, angular,php et nodejs.
+          Développeur Full Stack passionné par l’univer du web et doté d’une
+          curiosité pour cette metier.j’exerce cette metier depuis 2017 avec 3
+          ans d’experience. Je me suis spécialisé dans le développement frontend
+          ansi que le backend et je suis capable d’adopter avec tous les
+          environnements du développement. Je suis spécialisé sur les frameworks
+          Symfony, React Native, React , Python, Php et Nodejs.
         </Typography>
       </motion.div>
       <motion.div variants={gridItemVariants}>
