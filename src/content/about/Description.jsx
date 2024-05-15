@@ -1,24 +1,19 @@
 import React from 'react'
 import {
-  CardActions,
-  IconButton,
   Typography,
   Divider,
   Grid,
   Card,
   CardContent,
-  Box,
+  CardMedia,
 } from '@mui/material'
 import { motion } from 'framer-motion'
 import Paper from '@mui/material/Paper'
 import { styled } from '@mui/material/styles'
 
-// import ui from '../../images/ui.jpg'
-// import appdev from '../../images/appdev.jpg'
-// import management from '../../images/management.png'
-// import webdev from '../../images/webdev.jpg'
-// import FavoriteIcon from '@mui/icons-material/Favorite'
-// import ShareIcon from '@mui/icons-material/Share'
+import uiux from '../../image/uiux.png'
+import appdev from '../../image/appdev.png'
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -45,11 +40,18 @@ const Description = () => {
       animate="visible"
     >
       <motion.div variants={gridItemVariants}>
-        <Typography variant="h3" component="h3" align="left" m={4} mb={2}>
+        <Typography
+          variant="h3"
+          component="h3"
+          align="left"
+          m={4}
+          mb={2}
+          sx={{ color: '#DDDDDD' }}
+        >
           About me
         </Typography>
       </motion.div>
-      <Divider light />
+      <Divider sx={{ borderColor: '#D74B76' }} />
       <motion.div variants={gridItemVariants}>
         <Typography
           variant="subtitle1"
@@ -57,6 +59,7 @@ const Description = () => {
           align="left"
           ml={5}
           mt={1}
+          sx={{ color: '#B4B4B8' }}
         >
           Développeur Full Stack passionné par l’univer du web et doté d’une
           curiosité pour cette metier.j’exerce cette metier depuis 2017 avec 3
@@ -67,11 +70,18 @@ const Description = () => {
         </Typography>
       </motion.div>
       <motion.div variants={gridItemVariants}>
-        <Typography variant="h3" component="h3" align="left" m={4} mb={2}>
+        <Typography
+          variant="h3"
+          component="h3"
+          align="left"
+          m={4}
+          mb={2}
+          sx={{ color: '#DDDDDD' }}
+        >
           What i do!
         </Typography>
       </motion.div>
-      <Divider light />
+      <Divider sx={{ borderColor: '#D74B76', marginBottom: '10px' }} />
       <Grid
         container
         spacing={4}
@@ -80,114 +90,66 @@ const Description = () => {
         mb={6.7}
       >
         <Grid item xs={12} sm={6}>
-          <Item>
-            <motion.div variants={gridItemVariants}>
-              <Card
-                sx={{
-                  height: 170,
-                  maxWidth: 345,
-                  margin: 'auto',
-                  //   background: `url(${ui})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  opacity: '0.9',
-                }}
-              >
-                <CardContent
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
-                  {/* <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    sx={{ color: '#22092C' }}
-                  >
-                    UI/UX Design
-                  </Typography> */}
-                  <Typography
-                    mt={8}
-                    variant="body2"
-                    // color="text.secondary"
-
-                    sx={{
-                      color: '#192655',
-                      fontSize: '19px',
-                      fontFamily: 'cursive',
-                      fontStyle: 'initial',
-                    }}
-                  >
-                    helps create products with a good user experience
-                  </Typography>
-                </CardContent>
-                {/* <CardActions disableSpacing>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon sx={{ color: '#D80032' }} />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon sx={{ color: 'whitesmoke' }} />
-                  </IconButton>
-                </CardActions> */}
-              </Card>
-            </motion.div>
-          </Item>
+          <motion.div variants={gridItemVariants}>
+            <Card
+              sx={{
+                height: 170,
+                maxWidth: 345,
+                margin: 'auto',
+                opacity: '0.9',
+                display: 'flex',
+                padding: 2,
+              }}
+            >
+              <CardMedia
+                component="img"
+                sx={{ width: 100, height: 70 }}
+                image={uiux}
+                alt="UIUX"
+              />
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  UI/UX Design
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Lizards are a widespread group of squamate reptiles, with over
+                  6,000 species, ranging across all continents except Antarctica
+                </Typography>
+              </CardContent>
+            </Card>
+          </motion.div>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Item>
-            <motion.div variants={gridItemVariants}>
-              <Card
-                sx={{
-                  height: 170,
-                  maxWidth: 345,
-                  margin: 'auto',
-                  //   background: `url(${appdev})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              >
-                <CardContent
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
-                  {/* <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    sx={{ color: 'dark' }}
-                  >
-                    Application Web
-                  </Typography> */}
-                  <Typography
-                    mt={8}
-                    variant="body2"
-                    // color="text.secondary"
-
-                    sx={{
-                      color: '#192655',
-                      fontSize: '19px',
-                      fontFamily: 'cursive',
-                      fontStyle: 'initial',
-                    }}
-                  >
-                    Crée et maintenir les sites web , crée un contenue pour les
-                    sites web avec un bonne perfermonce.{' '}
-                  </Typography>
-                </CardContent>
-                {/* <CardActions disableSpacing>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon sx={{ color: '#D80032' }} />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon sx={{ color: 'whitesmoke' }} />
-                  </IconButton>
-                </CardActions> */}
-              </Card>
-            </motion.div>
-          </Item>
+          <motion.div variants={gridItemVariants}>
+            <Card
+              sx={{
+                height: 170,
+                maxWidth: 345,
+                margin: 'auto',
+                opacity: '0.9',
+                display: 'flex',
+                padding: 2,
+                bgcolor: '#49243E',
+                borderColor: 'theme.palette.secondary.main',
+              }}
+            >
+              <CardMedia
+                component="img"
+                sx={{ width: 100, height: 70 }}
+                image={appdev}
+                alt="applicationn Web"
+              />
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  App Development
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Lizards are a widespread group of squamate reptiles, with over
+                  6,000 species, ranging across all continents except Antarctica
+                </Typography>
+              </CardContent>
+            </Card>
+          </motion.div>
         </Grid>
       </Grid>
     </motion.div>
