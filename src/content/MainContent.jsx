@@ -38,7 +38,10 @@ const MainContent = () => {
               md={8}
               height={`${activeNavItem === 'contact' && '35rem'}`}
             >
-              <Item component="section" sx={{ borderRadius: '25px' }}>
+              <Item
+                component="section"
+                sx={{ borderRadius: '25px', bgcolor: '#32012F' }}
+              >
                 {' '}
                 <Containers activeNavItem={activeNavItem} />{' '}
               </Item>
