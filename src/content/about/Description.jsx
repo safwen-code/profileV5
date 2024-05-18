@@ -8,19 +8,11 @@ import {
   CardMedia,
 } from '@mui/material'
 import { motion } from 'framer-motion'
-import Paper from '@mui/material/Paper'
-import { styled } from '@mui/material/styles'
 
 import uiux from '../../image/uiux.png'
 import appdev from '../../image/appdev.png'
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}))
+import concep from '../../image/concep.png'
+import mobileapp from '../../image/mobileapp.png'
 
 const Description = () => {
   const gridContainerVariants = {
@@ -99,6 +91,8 @@ const Description = () => {
                 opacity: '0.9',
                 display: 'flex',
                 padding: 2,
+                bgcolor: '#49243E',
+                border: '1px solid #E2DFD0',
               }}
             >
               <CardMedia
@@ -130,7 +124,7 @@ const Description = () => {
                 display: 'flex',
                 padding: 2,
                 bgcolor: '#49243E',
-                borderColor: 'theme.palette.secondary.main',
+                border: '1px solid #E2DFD0',
               }}
             >
               <CardMedia
@@ -142,6 +136,70 @@ const Description = () => {
               <CardContent>
                 <Typography variant="h5" component="div">
                   App Development
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Lizards are a widespread group of squamate reptiles, with over
+                  6,000 species, ranging across all continents except Antarctica
+                </Typography>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <motion.div variants={gridItemVariants}>
+            <Card
+              sx={{
+                height: 170,
+                maxWidth: 345,
+                margin: 'auto',
+                opacity: '0.9',
+                display: 'flex',
+                padding: 2,
+                bgcolor: '#49243E',
+                border: '1px solid #E2DFD0',
+              }}
+            >
+              <CardMedia
+                component="img"
+                sx={{ width: 100, height: 70 }}
+                image={concep}
+                alt="conception"
+              />
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Conception & Managment
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Lizards are a widespread group of squamate reptiles, with over
+                  6,000 species, ranging across all continents except Antarctica
+                </Typography>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <motion.div variants={gridItemVariants}>
+            <Card
+              sx={{
+                height: 170,
+                maxWidth: 345,
+                margin: 'auto',
+                opacity: '0.9',
+                display: 'flex',
+                padding: 2,
+                bgcolor: '#49243E',
+                border: '1px solid #E2DFD0',
+              }}
+            >
+              <CardMedia
+                component="img"
+                sx={{ width: 100, height: 70 }}
+                image={mobileapp}
+                alt="applicationn Mobile"
+              />
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Application Mobile
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Lizards are a widespread group of squamate reptiles, with over
