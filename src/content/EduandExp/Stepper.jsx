@@ -71,8 +71,8 @@ const VerticalLinearStepper = () => {
           </StepLabel>
           <StepContent
             sx={{
-              // display: 'flex',
-              // alignItems: 'start',
+              display: 'flex',
+              alignItems: 'start',
               borderColor: '#D74B76',
             }}
           >

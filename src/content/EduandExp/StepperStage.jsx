@@ -38,8 +38,6 @@ const StepperWork = () => {
                   component="div"
                   id="nested-list-subheader"
                   sx={{
-                    display: 'flex',
-                    alignItems: 'start',
                     bgcolor: '#49243E',
                     border: '1px solid #E2DFD0',
                     borderRadius: '3px',

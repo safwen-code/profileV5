@@ -9,6 +9,7 @@ import {
   List,
   ListItem,
   ListSubheader,
+  Typography,
 } from '@mui/material'
 
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined'
@@ -16,19 +17,33 @@ import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined'
 const StepperWork = () => {
   return (
     <>
-      <Stepper
-        orientation="vertical"
-        // activeStep={0} /* Specify the active step index here */
-      >
-        <Step key={0} active={1}>
+      <Stepper orientation="vertical">
+        <Step key={0} active={1} sx={{ color: '#B4B4B8' }}>
           <StepLabel StepIconComponent={WorkOutlineOutlinedIcon}>
-            BQube ITS
-            <Chip label=" 2021, 2023" />
+            <Typography component="span" sx={{ color: '#FFFFFF' }}>
+              BQube ITS
+            </Typography>
+            <Chip label=" 2021, 2023" sx={{ color: '#DDDDDD' }} />
           </StepLabel>
-          <StepContent sx={{ display: 'flex', alignItems: 'start' }}>
+          <StepContent
+            sx={{
+              display: 'flex',
+              alignItems: 'start',
+              borderColor: '#D74B76',
+            }}
+          >
             <List
               subheader={
-                <ListSubheader component="div" id="nested-list-subheader">
+                <ListSubheader
+                  component="div"
+                  id="nested-list-subheader"
+                  sx={{
+                    bgcolor: '#49243E',
+                    border: '1px solid #E2DFD0',
+                    borderRadius: '3px',
+                    color: '#B4B4B8',
+                  }}
+                >
                   Développeur Full Stack
                 </ListSubheader>
               }
@@ -42,22 +57,36 @@ const StepperWork = () => {
                 processus commercial{' '}
               </ListItem>
             </List>
-            x{' '}
           </StepContent>
         </Step>
 
-        <Step key={1} active={1}>
+        <Step key={1} active={1} sx={{ color: '#B4B4B8' }}>
           <StepLabel StepIconComponent={WorkOutlineOutlinedIcon}>
-            TIMELEC
-            <Chip label="2020 - 2021" />
+            <Typography component="span" sx={{ color: '#FFFFFF' }}>
+              TIMELEC
+            </Typography>
+            <Chip label="2020 - 2021" sx={{ color: '#DDDDDD' }} />
           </StepLabel>
           <StepContent
-            sx={{ display: 'flex', alignItems: 'start' }}
+            sx={{
+              display: 'flex',
+              alignItems: 'start',
+              borderColor: '#D74B76',
+            }}
             style={{ height: '250px' }}
           >
             <List
               subheader={
-                <ListSubheader component="div" id="nested-list-subheader">
+                <ListSubheader
+                  component="div"
+                  id="nested-list-subheader"
+                  sx={{
+                    bgcolor: '#49243E',
+                    border: '1px solid #E2DFD0',
+                    borderRadius: '3px',
+                    color: '#B4B4B8',
+                  }}
+                >
                   Opérateur Machine{' '}
                 </ListSubheader>
               }
