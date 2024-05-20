@@ -102,10 +102,14 @@ const Description = () => {
                 alt="UIUX"
               />
               <CardContent>
-                <Typography variant="h5" component="div">
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{ color: '#DDDDDD' }}
+                >
                   UI/UX Design
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
                   Lizards are a widespread group of squamate reptiles, with over
                   6,000 species, ranging across all continents except Antarctica
                 </Typography>
@@ -134,10 +138,14 @@ const Description = () => {
                 alt="applicationn Web"
               />
               <CardContent>
-                <Typography variant="h5" component="div">
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{ color: '#DDDDDD' }}
+                >
                   App Development
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
                   Lizards are a widespread group of squamate reptiles, with over
                   6,000 species, ranging across all continents except Antarctica
                 </Typography>
@@ -166,10 +174,14 @@ const Description = () => {
                 alt="conception"
               />
               <CardContent>
-                <Typography variant="h5" component="div">
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{ color: '#DDDDDD' }}
+                >
                   Conception & Managment
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
                   Lizards are a widespread group of squamate reptiles, with over
                   6,000 species, ranging across all continents except Antarctica
                 </Typography>
@@ -198,10 +210,14 @@ const Description = () => {
                 alt="applicationn Mobile"
               />
               <CardContent>
-                <Typography variant="h5" component="div">
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={{ color: '#DDDDDD' }}
+                >
                   Application Mobile
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
                   Lizards are a widespread group of squamate reptiles, with over
                   6,000 species, ranging across all continents except Antarctica
                 </Typography>
