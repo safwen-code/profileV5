@@ -25,7 +25,13 @@ const VerticalLinearStepper = () => {
             </Typography>
             <Chip label="October 2018, 2019" sx={{ color: '#DDDDDD' }} />
           </StepLabel>
-          <StepContent sx={{ display: 'flex', alignItems: 'start' }}>
+          <StepContent
+            sx={{
+              display: 'flex',
+              alignItems: 'start',
+              borderColor: '#D74B76',
+            }}
+          >
             <List
               subheader={
                 <ListSubheader
@@ -63,7 +69,13 @@ const VerticalLinearStepper = () => {
             </Typography>
             <Chip label="2014 - 2017" sx={{ color: '#DDDDDD' }} />
           </StepLabel>
-          <StepContent sx={{ display: 'flex', alignItems: 'start' }}>
+          <StepContent
+            sx={{
+              // display: 'flex',
+              // alignItems: 'start',
+              borderColor: '#D74B76',
+            }}
+          >
             <List
               subheader={
                 <ListSubheader
@@ -95,7 +107,7 @@ const VerticalLinearStepper = () => {
             </List>
           </StepContent>
         </Step>
-        <Step key={2} active={1}>
+        <Step key={2} active={1} sx={{ color: '#B4B4B8' }}>
           <StepLabel StepIconComponent={SchoolOutlinedIcon}>
             <Typography component="span" sx={{ color: '#FFFFFF' }}>
               Baccalaureate informatique
