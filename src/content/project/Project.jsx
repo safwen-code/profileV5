@@ -7,6 +7,7 @@ import {
   IconButton,
   CardContent,
   CardActions,
+  CardMedia,
 } from '@mui/material'
 
 // import apprelease from './app-release.apk'
@@ -40,11 +41,18 @@ const Project = () => {
         animate="visible"
       >
         <motion.div variants={gridItemVariants}>
-          <Typography variant="h3" component="h3" align="left" m={4} mb={2}>
+          <Typography
+            variant="h3"
+            component="h3"
+            align="left"
+            m={4}
+            mb={2}
+            sx={{ color: '#DDDDDD' }}
+          >
             Projects
           </Typography>
         </motion.div>
-        <Divider light />
+        <Divider sx={{ borderColor: '#D74B76' }} />
         <motion.div variants={gridItemVariants}>
           <Typography
             variant="subtitle1"
@@ -52,6 +60,7 @@ const Project = () => {
             align="left"
             ml={5}
             mt={1}
+            sx={{ color: '#B4B4B8' }}
           >
             Software Engineer with 3 years Computer Science degree and more than
             2 year of experience.As a dedicated problem solver , I have many
@@ -61,191 +70,197 @@ const Project = () => {
           </Typography>
         </motion.div>
         <motion.div variants={gridItemVariants}>
-          <Typography variant="h3" component="h3" align="left" m={4} mb={2}>
+          <Typography
+            variant="h3"
+            component="h3"
+            align="left"
+            m={4}
+            mb={2}
+            sx={{ color: '#DDDDDD' }}
+          >
             Project I Done
           </Typography>
         </motion.div>
-        <Divider light />
+        <Divider sx={{ borderColor: '#D74B76' }} />
 
-        <Grid container spacing={2} mt={4} mb={4}>
-          <Grid item xs={12} sm={8} md={6}>
+        <Grid container spacing={4} rowSpacing={1} mt={1}>
+          <Grid item xs={12} sm={6}>
             <motion.div variants={gridItemVariants}>
               <Card
                 sx={{
                   height: 170,
                   maxWidth: 345,
-                  // background: `url(${ui})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  margin: 'auto',
                   opacity: '0.9',
+                  display: 'flex',
+                  padding: 2,
+                  bgcolor: '#49243E',
+                  border: '1px solid #E2DFD0',
                 }}
               >
-                <CardContent
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
+                <CardMedia
+                  component="img"
+                  sx={{ width: 100, height: 70 }}
+                  // image={uiux}
+                  alt="Hungel Home"
+                />
+                <CardContent>
                   <Typography
-                    gutterBottom
                     variant="h5"
                     component="div"
-                    sx={{ color: 'dark' }}
+                    sx={{ color: '#DDDDDD' }}
                   >
                     Jungel Home
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ color: 'dark' }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam euismod volutpat
+                  <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
+                    Lizards are a widespread group of squamate reptiles, with
+                    over 6,000 species, ranging across all continents except
+                    Antarctica
                   </Typography>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon sx={{ color: '#D80032' }} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                      <ShareIcon sx={{ color: 'whitesmoke' }} />
+                    </IconButton>
+                  </CardActions>
                 </CardContent>
-                <CardActions disableSpacing>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon sx={{ color: '#D80032' }} />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon sx={{ color: 'whitesmoke' }} />
-                  </IconButton>
-                </CardActions>
               </Card>
             </motion.div>
           </Grid>
-          <Grid item xs={12} sm={8} md={6}>
+          <Grid item xs={12} sm={6}>
             <motion.div variants={gridItemVariants}>
               <Card
                 sx={{
                   height: 170,
                   maxWidth: 345,
-                  // background: `url(${appdev})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  margin: 'auto',
+                  opacity: '0.9',
+                  display: 'flex',
+                  padding: 2,
+                  bgcolor: '#49243E',
+                  border: '1px solid #E2DFD0',
                 }}
               >
-                <CardContent
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
+                <CardMedia
+                  component="img"
+                  sx={{ width: 100, height: 70 }}
+                  // image={appdev}
+                  alt="E comerce"
+                />
+                <CardContent>
                   <Typography
-                    gutterBottom
                     variant="h5"
                     component="div"
-                    sx={{ color: 'dark' }}
+                    sx={{ color: '#DDDDDD' }}
                   >
-                    E comerce
+                    ECommerce App
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ color: 'dark' }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam euismod volutpat
+                  <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
+                    Lizards are a widespread group of squamate reptiles, with
+                    over 6,000 species, ranging across all continents except
+                    Antarctica
                   </Typography>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon sx={{ color: '#D80032' }} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                      <ShareIcon sx={{ color: 'whitesmoke' }} />
+                    </IconButton>
+                  </CardActions>
                 </CardContent>
-                <CardActions disableSpacing>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon sx={{ color: '#D80032' }} />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon sx={{ color: 'whitesmoke' }} />
-                  </IconButton>
-                </CardActions>
               </Card>
             </motion.div>
           </Grid>
-          <Grid item xs={12} sm={8} md={6}>
+          <Grid item xs={12} sm={6}>
             <motion.div variants={gridItemVariants}>
               <Card
                 sx={{
                   height: 170,
                   maxWidth: 345,
-                  // background: `url(${management})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  margin: 'auto',
+                  opacity: '0.9',
+                  display: 'flex',
+                  padding: 2,
+                  bgcolor: '#49243E',
+                  border: '1px solid #E2DFD0',
                 }}
               >
-                <CardContent
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
+                <CardMedia
+                  component="img"
+                  sx={{ width: 100, height: 70 }}
+                  // image={concep}
+                  alt="Gits"
+                />
+                <CardContent>
                   <Typography
-                    gutterBottom
                     variant="h5"
                     component="div"
-                    sx={{ color: 'dark' }}
+                    sx={{ color: '#DDDDDD' }}
                   >
-                    Gits
+                    Gits profile
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ color: 'dark' }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam euismod volutpat
+                  <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
+                    Lizards are a widespread group of squamate reptiles, with
+                    over 6,000 species, ranging across all continents except
+                    Antarctica
                   </Typography>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon sx={{ color: '#D80032' }} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                      <ShareIcon sx={{ color: 'whitesmoke' }} />
+                    </IconButton>
+                  </CardActions>
                 </CardContent>
-                <CardActions disableSpacing>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon sx={{ color: '#D80032' }} />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon sx={{ color: 'whitesmoke' }} />
-                  </IconButton>
-                </CardActions>
               </Card>
             </motion.div>
           </Grid>
-          <Grid item xs={12} sm={8} md={6}>
+          <Grid item xs={12} sm={6}>
             <motion.div variants={gridItemVariants}>
               <Card
                 sx={{
                   height: 170,
                   maxWidth: 345,
-                  // background: `url(${webdev})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  margin: 'auto',
+                  opacity: '0.9',
+                  display: 'flex',
+                  padding: 2,
+                  bgcolor: '#49243E',
+                  border: '1px solid #E2DFD0',
                 }}
               >
-                <CardContent
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
+                <CardMedia
+                  component="img"
+                  sx={{ width: 100, height: 70 }}
+                  // image={mobileapp}
+                  alt="Profile screen"
+                />
+                <CardContent>
                   <Typography
-                    gutterBottom
                     variant="h5"
                     component="div"
-                    sx={{ color: 'dark' }}
+                    sx={{ color: '#DDDDDD' }}
                   >
-                    Profiles
+                    Profile Screen
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ color: 'dark' }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam euismod volutpat
+                  <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
+                    Lizards are a widespread group of squamate reptiles, with
+                    over 6,000 species, ranging across all continents except
+                    Antarctica
                   </Typography>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon sx={{ color: '#D80032' }} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                      <ShareIcon sx={{ color: 'whitesmoke' }} />
+                    </IconButton>
+                  </CardActions>
                 </CardContent>
-                <CardActions disableSpacing>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon sx={{ color: '#D80032' }} />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon sx={{ color: 'whitesmoke' }} />
-                  </IconButton>
-                </CardActions>
               </Card>
             </motion.div>
           </Grid>
