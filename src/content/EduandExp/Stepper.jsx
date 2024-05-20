@@ -9,6 +9,7 @@ import {
   List,
   ListItem,
   ListSubheader,
+  Typography,
 } from '@mui/material'
 
 import ModelTrainingIcon from '@mui/icons-material/ModelTraining'
@@ -16,23 +17,27 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
 const VerticalLinearStepper = () => {
   return (
     <>
-      <Stepper
-        orientation="vertical"
-        sx={{
-          '& .MuiStepConnector-line': {
-            borderColor: '#2196f3 !important',
-          },
-        }}
-        // activeStep={0}
-      >
-        <Step key={0} active={1}>
+      <Stepper orientation="vertical">
+        <Step key={0} active={1} sx={{ color: '#B4B4B8' }}>
           <StepLabel StepIconComponent={ModelTrainingIcon}>
-            Go My Code <Chip label="October 2018, 2019" />
+            <Typography component="span" sx={{ color: '#FFFFFF' }}>
+              Go My Code
+            </Typography>
+            <Chip label="October 2018, 2019" sx={{ color: '#DDDDDD' }} />
           </StepLabel>
           <StepContent sx={{ display: 'flex', alignItems: 'start' }}>
             <List
               subheader={
-                <ListSubheader component="div" id="nested-list-subheader">
+                <ListSubheader
+                  component="div"
+                  id="nested-list-subheader"
+                  sx={{
+                    bgcolor: '#49243E',
+                    border: '1px solid #E2DFD0',
+                    borderRadius: '3px',
+                    color: '#B4B4B8',
+                  }}
+                >
                   Instructeur Web
                 </ListSubheader>
               }
@@ -51,14 +56,26 @@ const VerticalLinearStepper = () => {
             </List>
           </StepContent>
         </Step>
-        <Step key={1} active={1}>
+        <Step key={1} active={1} sx={{ color: '#B4B4B8' }}>
           <StepLabel StepIconComponent={SchoolOutlinedIcon}>
-            Téchnicien Supérieur En Informatique <Chip label="2014 - 2017" />
+            <Typography component="span" sx={{ color: '#FFFFFF' }}>
+              Téchnicien Supérieur En Informatique
+            </Typography>
+            <Chip label="2014 - 2017" sx={{ color: '#DDDDDD' }} />
           </StepLabel>
           <StepContent sx={{ display: 'flex', alignItems: 'start' }}>
             <List
               subheader={
-                <ListSubheader component="div" id="nested-list-subheader">
+                <ListSubheader
+                  component="div"
+                  id="nested-list-subheader"
+                  sx={{
+                    bgcolor: '#49243E',
+                    border: '1px solid #E2DFD0',
+                    borderRadius: '3px',
+                    color: '#B4B4B8',
+                  }}
+                >
                   Développeur du Systéme Informatique
                 </ListSubheader>
               }
@@ -80,7 +97,10 @@ const VerticalLinearStepper = () => {
         </Step>
         <Step key={2} active={1}>
           <StepLabel StepIconComponent={SchoolOutlinedIcon}>
-            Baccalaureate informatique <Chip label="October 2013, 2014" />
+            <Typography component="span" sx={{ color: '#FFFFFF' }}>
+              Baccalaureate informatique
+            </Typography>
+            <Chip label="October 2013, 2014" sx={{ color: '#DDDDDD' }} />
           </StepLabel>
         </Step>
       </Stepper>
