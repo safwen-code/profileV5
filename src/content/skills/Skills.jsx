@@ -4,6 +4,7 @@ import 'react-circular-progressbar/dist/styles.css'
 import { motion } from 'framer-motion'
 import { Card, Divider, Typography, Grid } from '@mui/material'
 import LinearProgress from '@mui/material/LinearProgress'
+import { easeQuadInOut } from 'd3-ease'
 import './skill.css'
 
 // import Swip from './Swip'
