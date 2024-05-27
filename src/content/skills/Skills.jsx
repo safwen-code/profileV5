@@ -4,8 +4,9 @@ import 'react-circular-progressbar/dist/styles.css'
 import { motion } from 'framer-motion'
 import { Card, Divider, Typography, Grid } from '@mui/material'
 import LinearProgress from '@mui/material/LinearProgress'
-import { easeQuadInOut } from 'd3-ease'
 import './skill.css'
+import AnimatedProgressProvider from './AnimatedProgressProvider'
+import { easeQuadInOut } from 'd3-ease'
 
 // import Swip from './Swip'
 
@@ -47,17 +48,31 @@ const Skills = ({ props }) => {
             }}
           >
             <motion.div variants={gridItemVariants}>
-              <div className="skill-card">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    textColor: '#e34c26',
-                    pathColor: '#e34c26',
-                  })}
-                />
-                <p className="skill-name">HTML</p>
-              </div>
+              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
+                {(percentage) => {
+                  return (
+                    <div className="skill-card">
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        styles={buildStyles({
+                          pathTransitionDuration: 0.15,
+                        })}
+                      />
+                      <p className="skill-name">HTML</p>
+                    </div>
+                  )
+                }}
+                {/* <CircularProgressbar
+                    value={percentage}
+                    text={`${percentage}%`}
+                    styles={buildStyles({
+                      textColor: '#e34c26',
+                      pathColor: '#e34c26',
+                    })}
+                  />
+                 */}
+              </AnimatedProgressProvider>
             </motion.div>
           </Grid>
           <Grid
