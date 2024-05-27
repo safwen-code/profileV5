@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { motion } from 'framer-motion'
@@ -7,6 +7,7 @@ import LinearProgress from '@mui/material/LinearProgress'
 import './skill.css'
 import AnimatedProgressProvider from './AnimatedProgressProvider'
 import { easeQuadInOut } from 'd3-ease'
+import { useState } from 'react'
 
 // import Swip from './Swip'
 
@@ -24,8 +25,47 @@ const gridContainerVariants = {
 }
 
 const Skills = ({ props }) => {
-  const percentage = 50
+  const [progress1, setProgress1] = useState(0)
+  const [progress2, setProgress2] = useState(0)
+  const [progress3, setProgress3] = useState(0)
 
+  useEffect(() => {
+    const timer1 = setInterval(() => {
+      setProgress1((prevProgress) => {
+        if (prevProgress >= 70) {
+          clearInterval(timer1)
+          return 70
+        }
+        return prevProgress + 1
+      })
+    }, 50)
+
+    const timer2 = setInterval(() => {
+      setProgress2((prevProgress) => {
+        if (prevProgress >= 50) {
+          clearInterval(timer2)
+          return 50
+        }
+        return prevProgress + 1
+      })
+    }, 50)
+
+    const timer3 = setInterval(() => {
+      setProgress3((prevProgress) => {
+        if (prevProgress >= 90) {
+          clearInterval(timer3)
+          return 90
+        }
+        return prevProgress + 1
+      })
+    }, 50)
+
+    return () => {
+      clearInterval(timer1)
+      clearInterval(timer2)
+      clearInterval(timer3)
+    }
+  }, [])
   return (
     <>
       {/* CircularProgressbar fixed */}
@@ -63,15 +103,6 @@ const Skills = ({ props }) => {
                     </div>
                   )
                 }}
-                {/* <CircularProgressbar
-                    value={percentage}
-                    text={`${percentage}%`}
-                    styles={buildStyles({
-                      textColor: '#e34c26',
-                      pathColor: '#e34c26',
-                    })}
-                  />
-                 */}
               </AnimatedProgressProvider>
             </motion.div>
           </Grid>
@@ -88,17 +119,54 @@ const Skills = ({ props }) => {
             }}
           >
             <motion.div variants={gridItemVariants}>
-              <div className="skill-card">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    textColor: '#264de4',
-                    pathColor: '#264de4',
-                  })}
-                />
-                <p className="skill-name">css</p>
-              </div>
+              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
+                {(percentage) => {
+                  return (
+                    <div className="skill-card">
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        styles={buildStyles({
+                          pathTransitionDuration: 0.15,
+                        })}
+                      />
+                      <p className="skill-name">HTML</p>
+                    </div>
+                  )
+                }}
+              </AnimatedProgressProvider>
+            </motion.div>
+          </Grid>
+
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <motion.div variants={gridItemVariants}>
+              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
+                {(percentage) => {
+                  return (
+                    <div className="skill-card">
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        styles={buildStyles({
+                          pathTransitionDuration: 0.15,
+                        })}
+                      />
+                      <p className="skill-name">HTML</p>
+                    </div>
+                  )
+                }}
+              </AnimatedProgressProvider>
             </motion.div>
           </Grid>
           <Grid
@@ -114,17 +182,22 @@ const Skills = ({ props }) => {
             }}
           >
             <motion.div variants={gridItemVariants}>
-              <div className="skill-card">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    textColor: '#392467',
-                    pathColor: '#392467',
-                  })}
-                />
-                <p className="skill-name">Bootstrap </p>
-              </div>
+              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
+                {(percentage) => {
+                  return (
+                    <div className="skill-card">
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        styles={buildStyles({
+                          pathTransitionDuration: 0.15,
+                        })}
+                      />
+                      <p className="skill-name">HTML</p>
+                    </div>
+                  )
+                }}
+              </AnimatedProgressProvider>
             </motion.div>
           </Grid>
           <Grid
@@ -140,17 +213,22 @@ const Skills = ({ props }) => {
             }}
           >
             <motion.div variants={gridItemVariants}>
-              <div className="skill-card">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    textColor: '#1B4242',
-                    pathColor: '#1B4242',
-                  })}
-                />
-                <p className="skill-name">React-bootstrap</p>
-              </div>
+              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
+                {(percentage) => {
+                  return (
+                    <div className="skill-card">
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        styles={buildStyles({
+                          pathTransitionDuration: 0.15,
+                        })}
+                      />
+                      <p className="skill-name">HTML</p>
+                    </div>
+                  )
+                }}
+              </AnimatedProgressProvider>
             </motion.div>
           </Grid>
           <Grid
@@ -166,17 +244,22 @@ const Skills = ({ props }) => {
             }}
           >
             <motion.div variants={gridItemVariants}>
-              <div className="skill-card">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    textColor: '#1677ff',
-                    pathColor: '#1677ff',
-                  })}
-                />
-                <p className="skill-name">Ant Design</p>
-              </div>
+              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
+                {(percentage) => {
+                  return (
+                    <div className="skill-card">
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        styles={buildStyles({
+                          pathTransitionDuration: 0.15,
+                        })}
+                      />
+                      <p className="skill-name">HTML</p>
+                    </div>
+                  )
+                }}
+              </AnimatedProgressProvider>
             </motion.div>
           </Grid>
           <Grid
@@ -192,17 +275,22 @@ const Skills = ({ props }) => {
             }}
           >
             <motion.div variants={gridItemVariants}>
-              <div className="skill-card">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    textColor: '#3081D0',
-                    pathColor: '#3081D0',
-                  })}
-                />
-                <p className="skill-name">Material-UI</p>
-              </div>
+              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
+                {(percentage) => {
+                  return (
+                    <div className="skill-card">
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        styles={buildStyles({
+                          pathTransitionDuration: 0.15,
+                        })}
+                      />
+                      <p className="skill-name">HTML</p>
+                    </div>
+                  )
+                }}
+              </AnimatedProgressProvider>
             </motion.div>
           </Grid>
           <Grid
@@ -218,49 +306,29 @@ const Skills = ({ props }) => {
             }}
           >
             <motion.div variants={gridItemVariants}>
-              <div className="skill-card">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    textColor: '#161A30',
-                    pathColor: '#161A30',
-                  })}
-                />
-                <p className="skill-name">Framer Motion</p>
-              </div>
-            </motion.div>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <motion.div variants={gridItemVariants}>
-              <div className="skill-card">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    textColor: '#0766AD',
-                    pathColor: '#0766AD',
-                  })}
-                />
-                <p className="skill-name">Devexpress</p>
-              </div>
+              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
+                {(percentage) => {
+                  return (
+                    <div className="skill-card">
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        styles={buildStyles({
+                          pathTransitionDuration: 0.15,
+                        })}
+                      />
+                      <p className="skill-name">HTML</p>
+                    </div>
+                  )
+                }}
+              </AnimatedProgressProvider>
             </motion.div>
           </Grid>
         </Grid>
       </motion.div>
 
-      <Divider light />
+      <Divider sx={{ borderColor: '#D74B76' }} />
+
       {/* pogrsseve bar fixed */}
 
       <motion.div variants={gridContainerVariants}>
@@ -283,13 +351,13 @@ const Skills = ({ props }) => {
           >
             <Typography
               variant="body2"
-              color="text.secondary"
-              sx={{ marginLeft: 2, marginRight: 2 }}
+              sx={{ color: '#DDDDDD', marginLeft: 2, marginRight: 2 }}
             >
               JavaScript
             </Typography>
             <LinearProgress
               variant="determinate"
+              value={progress1}
               sx={{
                 marginTop: 3,
                 marginBottom: 2,
@@ -302,9 +370,8 @@ const Skills = ({ props }) => {
             />
             <Typography
               variant="body2"
-              color="text.secondary"
-              sx={{ marginLeft: 2 }}
-            >{`${Math.round(70)}%`}</Typography>
+              sx={{ color: '#DDDDDD', marginLeft: 2 }}
+            >{`${progress1}%`}</Typography>
           </Grid>
           <Grid
             item
@@ -316,12 +383,13 @@ const Skills = ({ props }) => {
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{ marginLeft: 2, marginRight: 2 }}
+              sx={{ color: '#DDDDDD', marginLeft: 2, marginRight: 2 }}
             >
               Jquery , DOM
             </Typography>
             <LinearProgress
               variant="determinate"
+              value={progress2}
               sx={{
                 marginTop: 3,
                 marginBottom: 2,
@@ -335,8 +403,8 @@ const Skills = ({ props }) => {
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{ marginLeft: 2 }}
-            >{`${Math.round(70)}%`}</Typography>
+              sx={{ marginLeft: 2, color: '#DDDDDD' }}
+            >{`${progress2}%`}</Typography>
           </Grid>
           <Grid
             item
@@ -348,12 +416,13 @@ const Skills = ({ props }) => {
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{ marginLeft: 2 }}
+              sx={{ marginLeft: 2, color: '#DDDDDD' }}
             >
               Vanilla JavaScript
             </Typography>
             <LinearProgress
               variant="determinate"
+              value={progress3}
               sx={{
                 marginTop: 3,
                 marginBottom: 2,
@@ -366,13 +435,12 @@ const Skills = ({ props }) => {
             />
             <Typography
               variant="body2"
-              color="text.secondary"
-              sx={{ marginLeft: 2 }}
-            >{`${Math.round(70)}%`}</Typography>
+              sx={{ marginLeft: 2, color: '#DDDDDD' }}
+            >{`${progress3}%`}</Typography>
           </Grid>
         </Grid>
       </motion.div>
-      <Divider light />
+      <Divider sx={{ borderColor: '#D74B76' }} />
 
       {/* images react,ang , vue  fixed*/}
       <motion.div
