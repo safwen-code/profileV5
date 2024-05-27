@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const AnimatedProgressProvider = ({ interval = 1000, values, children }) => {
   const [valuesIndex, setValuesIndex] = useState(0)
