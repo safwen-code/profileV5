@@ -332,111 +332,107 @@ const Skills = ({ props }) => {
       {/* pogrsseve bar fixed */}
 
       <motion.div variants={gridContainerVariants}>
-        <Grid
-          container
-          spacing={6}
-          mt={4}
-          mb={4}
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={8}
-            sx={{ display: 'flex', alignItems: 'center' }}
-          >
-            <Typography
-              variant="body2"
-              sx={{ color: '#DDDDDD', marginLeft: 2, marginRight: 2 }}
+        <Grid container sx={{ display: 'flex', flexDirection: 'row' }}>
+          <Grid item sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={8}
+              sx={{ display: 'flex', alignItems: 'center' }}
             >
-              JavaScript
-            </Typography>
-            <LinearProgress
-              variant="determinate"
-              value={progress1}
-              sx={{
-                marginTop: 3,
-                marginBottom: 2,
-                width: { xs: '100%', sm: '100%', md: '700px' }, // Adjust the width as needed
-                height: 10,
-                borderRadius: 5,
-              }}
-              size={40}
-              thickness={4}
-            />
-            <Typography
-              variant="body2"
-              sx={{ color: '#DDDDDD', marginLeft: 2 }}
-            >{`${progress1}%`}</Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: '#DDDDDD', marginLeft: 2, marginRight: 2 }}
+              >
+                JavaScript
+              </Typography>
+              <LinearProgress
+                variant="determinate"
+                value={progress1}
+                sx={{
+                  marginTop: 3,
+                  marginBottom: 2,
+                  width: { xs: '100%', sm: '100%', md: '450px' }, // Adjust the width as needed
+                  height: 10,
+                  borderRadius: 5,
+                }}
+                size={40}
+                thickness={4}
+              />
+              <Typography
+                variant="body2"
+                sx={{ color: '#DDDDDD', marginLeft: 2 }}
+              >{`${progress1}%`}</Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={8}
+              sx={{ display: 'flex', alignItems: 'center' }}
+            >
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ color: '#DDDDDD', marginLeft: 2, marginRight: 2 }}
+              >
+                Jquery , DOM
+              </Typography>
+              <LinearProgress
+                variant="determinate"
+                value={progress2}
+                sx={{
+                  marginTop: 3,
+                  marginBottom: 2,
+                  width: { xs: '100%', sm: '100%', md: '450px' }, // Adjust the width as needed
+                  height: 10,
+                  borderRadius: 5,
+                }}
+                size={40}
+                thickness={4}
+              />
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ marginLeft: 2, color: '#DDDDDD' }}
+              >{`${progress2}%`}</Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={8}
+              sx={{ display: 'flex', alignItems: 'center' }}
+            >
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ marginLeft: 2, color: '#DDDDDD' }}
+              >
+                Vanilla JavaScript
+              </Typography>
+              <LinearProgress
+                variant="determinate"
+                value={progress3}
+                sx={{
+                  marginTop: 3,
+                  marginBottom: 2,
+                  width: { xs: '100%', sm: '100%', md: '450px' }, // Adjust the width as needed
+                  height: 10,
+                  borderRadius: 5,
+                }}
+                size={40}
+                thickness={4}
+              />
+              <Typography
+                variant="body2"
+                sx={{ marginLeft: 2, color: '#DDDDDD' }}
+              >{`${progress3}%`}</Typography>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={8}
-            sx={{ display: 'flex', alignItems: 'center' }}
-          >
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ color: '#DDDDDD', marginLeft: 2, marginRight: 2 }}
-            >
-              Jquery , DOM
-            </Typography>
-            <LinearProgress
-              variant="determinate"
-              value={progress2}
-              sx={{
-                marginTop: 3,
-                marginBottom: 2,
-                width: { xs: '100%', sm: '100%', md: '700px' }, // Adjust the width as needed
-                height: 10,
-                borderRadius: 5,
-              }}
-              size={40}
-              thickness={4}
-            />
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ marginLeft: 2, color: '#DDDDDD' }}
-            >{`${progress2}%`}</Typography>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={8}
-            sx={{ display: 'flex', alignItems: 'center' }}
-          >
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ marginLeft: 2, color: '#DDDDDD' }}
-            >
-              Vanilla JavaScript
-            </Typography>
-            <LinearProgress
-              variant="determinate"
-              value={progress3}
-              sx={{
-                marginTop: 3,
-                marginBottom: 2,
-                width: { xs: '100%', sm: '100%', md: '700px' }, // Adjust the width as needed
-                height: 10,
-                borderRadius: 5,
-              }}
-              size={40}
-              thickness={4}
-            />
-            <Typography
-              variant="body2"
-              sx={{ marginLeft: 2, color: '#DDDDDD' }}
-            >{`${progress3}%`}</Typography>
+          <Grid item sx={{}}>
+            Second item
           </Grid>
         </Grid>
       </motion.div>
