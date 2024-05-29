@@ -75,7 +75,7 @@ function SwipeableTextMobileStepper() {
             {Math.abs(activeStep - index) <= 2 ? (
               <Grid container spacing={6} mt={4} mb={4}>
                 {step.imgPath.map((img, index) => (
-                  <Grid item xs={12} sm={6} md={4}>
+                  <Grid item xs={12} sm={6} md={4} key={index}>
                     <motion.div variants={gridItemVariants}>
                       <Card
                         sx={{

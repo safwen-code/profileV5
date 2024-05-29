@@ -1,19 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
-import 'react-circular-progressbar/dist/styles.css'
 import { motion } from 'framer-motion'
-import { Card, Divider, Typography, Grid, Chip, Box } from '@mui/material'
+import { Divider, Typography, Grid, Chip, Box } from '@mui/material'
 import LinearProgress from '@mui/material/LinearProgress'
-import './skill.css'
 import AnimatedProgressProvider from './AnimatedProgressProvider'
-import { useState } from 'react'
 import SwipeableTextMobileStepper from './Swip'
-
-// import Swip from './Swip'
-
-// import ang from '../../images/ang.jpg'
-// import react from '../../images/react.jpg'
-// import vue from '../../images/vue.png'
+import 'react-circular-progressbar/dist/styles.css'
+import './skill.css'
 
 const gridItemVariants = {
   hidden: { opacity: 0, y: 20 },
