@@ -9,6 +9,8 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
 import SwipeableViews from 'react-swipeable-views'
 import { autoPlay } from 'react-swipeable-views-utils'
+import { Grid, Card } from '@mui/material'
+import { motion } from 'framer-motion'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
@@ -35,6 +37,11 @@ const images = [
   },
 ]
 
+const gridItemVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+}
+
 function SwipeableTextMobileStepper() {
   const theme = useTheme()
   const [activeStep, setActiveStep] = React.useState(0)
@@ -53,7 +60,7 @@ function SwipeableTextMobileStepper() {
   }
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} m={1}>
       <Paper
         square
         elevation={0}
@@ -76,51 +83,61 @@ function SwipeableTextMobileStepper() {
         {images.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                component="img"
-                sx={{
-                  height: 255,
-                  display: 'block',
-                  maxWidth: 400,
-                  overflow: 'hidden',
-                  width: '100%',
-                }}
-                src={step.imgPath}
-                alt={step.label}
-              />
+              <Grid container spacing={6} mt={4} mb={4}>
+                <Grid item xs={12} sm={6} md={4}>
+                  <motion.div variants={gridItemVariants}>
+                    <Card
+                      sx={{
+                        height: 170,
+                        maxWidth: 345,
+                        background: `url(${step.imgPath})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        opacity: '0.9',
+                      }}
+                    ></Card>
+                  </motion.div>
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <motion.div variants={gridItemVariants}>
+                    <Card
+                      sx={{
+                        height: 170,
+                        maxWidth: 345,
+                        background: `url(${step.imgPath})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        opacity: '0.9',
+                      }}
+                    ></Card>
+                  </motion.div>
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <motion.div variants={gridItemVariants}>
+                    <Card
+                      sx={{
+                        height: 170,
+                        maxWidth: 345,
+                        background: `url(${step.imgPath})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        opacity: '0.9',
+                      }}
+                    ></Card>
+                  </motion.div>
+                </Grid>
+              </Grid>
             ) : null}
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            Next
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      />
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+        <MobileStepper
+          steps={maxSteps}
+          position="static"
+          activeStep={activeStep}
+        />
+      </Box>
     </Box>
   )
 }
