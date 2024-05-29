@@ -6,8 +6,8 @@ import { Card, Divider, Typography, Grid, Chip, Box } from '@mui/material'
 import LinearProgress from '@mui/material/LinearProgress'
 import './skill.css'
 import AnimatedProgressProvider from './AnimatedProgressProvider'
-import { easeQuadInOut } from 'd3-ease'
 import { useState } from 'react'
+import SwipeableTextMobileStepper from './Swip'
 
 // import Swip from './Swip'
 
@@ -435,60 +435,8 @@ const Skills = ({ props }) => {
       </motion.div>
       <Divider sx={{ borderColor: '#D74B76' }} />
 
-      {/* images react,ang , vue  fixed*/}
-      <motion.div
-        variants={gridContainerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <Grid container spacing={6} mt={4} mb={4}>
-          <Grid item xs={12} sm={6} md={4}>
-            <motion.div variants={gridItemVariants}>
-              <Card
-                sx={{
-                  height: 170,
-                  maxWidth: 345,
-                  // background: `url(${ang})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  opacity: '0.9',
-                }}
-              ></Card>
-            </motion.div>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <motion.div variants={gridItemVariants}>
-              <Card
-                sx={{
-                  height: 170,
-                  maxWidth: 345,
-                  // background: `url(${react})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  opacity: '0.9',
-                }}
-              ></Card>
-            </motion.div>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <motion.div variants={gridItemVariants}>
-              <Card
-                sx={{
-                  height: 170,
-                  maxWidth: 345,
-                  // background: `url(${vue})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  opacity: '0.9',
-                }}
-              ></Card>
-            </motion.div>
-          </Grid>
-        </Grid>
-      </motion.div>
-      <Divider light />
       {/* outil fixed image */}
-      {/* <Swip /> */}
+      <SwipeableTextMobileStepper />
     </>
   )
 }
