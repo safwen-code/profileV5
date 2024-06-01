@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Divider, Grid, Typography, Button, Box } from '@mui/material'
+import { Alert, Divider, Grid, Button } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import TextField from '@mui/material/TextField'
 import emailjs from '@emailjs/browser'
@@ -142,7 +142,7 @@ const Contact = () => {
             }}
             error={message === '' && errorField}
             helperText={
-              errorField && message === '' ? 'message is required' : ''
+              errorField && message === '' ? 'Message is required' : ''
             }
             required
             label="message please"
@@ -158,7 +158,17 @@ const Contact = () => {
         </Grid>
       </Grid>
       <Button
-        style={{ marginTop: '10px', marginBottom: '5px' }}
+        sx={{
+          marginTop: '10px',
+          marginBottom: '5px',
+          color: '#DDDDDD',
+          borderColor: '#DDDDDD',
+          '&:hover': {
+            color: '#A91D3A', // Text color on hover
+            borderColor: '#A91D3A', // Border color on hover
+            backgroundColor: 'rgba(255, 255, 255, 0.08)',
+          },
+        }}
         variant="outlined"
         endIcon={<SendIcon />}
         onClick={submitHundel}
