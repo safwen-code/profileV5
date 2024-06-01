@@ -13,8 +13,9 @@ import TextField from '@mui/material/TextField'
 import emailjs from '@emailjs/browser'
 import Paper from '@mui/material/Paper'
 import { styled } from '@mui/material/styles'
-import phone from '../../image/phone.mp4'
 import RoundedVideo from './RoundedVideo'
+import phone from '../../image/phone.mp4'
+import mail from '../../image/mail.mp4'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -120,8 +121,26 @@ const Contact = () => {
           </Item>
         </Grid>
         <Grid item xs={6}>
-          <Item sx={{ bgcolor: '#49243E', border: '1px solid #E2DFD0' }}>
-            2
+          <Item
+            sx={{
+              bgcolor: '#49243E',
+              border: '1px solid #E2DFD0',
+              display: 'flex',
+            }}
+          >
+            {' '}
+            <RoundedVideo src={mail} />
+            <Grid sx={{ marginLeft: '20px' }}>
+              <Typography component="h3" sx={{ color: '#DDDDDD' }}>
+                Email :
+              </Typography>
+              <Typography
+                component="span"
+                sx={{ color: '#DDDDDD', marginLeft: '30px' }}
+              >
+                safwendjebbi1234@gmail.com
+              </Typography>
+            </Grid>
           </Item>
         </Grid>
       </Grid>
