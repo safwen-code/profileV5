@@ -125,6 +125,7 @@ const Contact = () => {
             margin="dense"
             name="email"
             value={email}
+            color="secondary"
             onChange={ChangeHundel}
           />{' '}
         </Grid>
@@ -149,6 +150,7 @@ const Contact = () => {
             margin="dense"
             multiline
             rows={4}
+            color="success"
             name="message"
             value={message}
             onChange={ChangeHundel}
