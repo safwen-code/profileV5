@@ -67,14 +67,31 @@ const Contact = () => {
   }
   return (
     <>
-      <Stack spacing={2} mt={3} height={8}>
-        <Item>Contact Me</Item>
+      <Stack spacing={2} mt={3} height={8} mb={2}>
+        <Item
+          sx={{
+            bgcolor: '#49243E',
+            border: '1px solid #E2DFD0',
+            color: '#DDDDDD',
+          }}
+        >
+          Contact Me
+        </Item>
       </Stack>
-      <Divider variant="middle" style={{ backgroundColor: '#4dabf5' }} mb={3} />
-      <Grid spacing={2} pt={6} mt={2} direction="column">
+
+      <Grid spacing={2} pt={6} mt={3} direction="column">
+        <Divider sx={{ borderColor: '#D74B76' }} />
         <Grid item xs={12} sm={6} mt={3}>
           <TextField
-            sx={{ width: '20rem' }}
+            sx={{
+              width: '20rem',
+              '& .MuiInputBase-root.MuiInput-root': {
+                color: '#DDDDDD',
+              },
+              '& .MuiInputLabel-root': {
+                color: '#DDDDDD',
+              },
+            }}
             error={name === '' && errorField}
             helperText={errorField && name === '' ? 'Name is required' : ''}
             required
@@ -87,11 +104,18 @@ const Contact = () => {
             onChange={ChangeHundel}
             style={{ marginRight: '5px' }}
           />
-          .
         </Grid>
         <Grid item xs={12} sm={6} mt={3}>
           <TextField
-            sx={{ width: '20rem' }}
+            sx={{
+              width: '20rem',
+              '& .MuiInputBase-root.MuiInput-root': {
+                color: '#DDDDDD',
+              },
+              '& .MuiInputLabel-root': {
+                color: '#DDDDDD',
+              },
+            }}
             error={email === '' && errorField}
             helperText={errorField && email === '' ? 'Email is required' : ''}
             required
@@ -106,7 +130,15 @@ const Contact = () => {
         </Grid>
         <Grid item xs={12} sm={6} mt={3}>
           <TextField
-            sx={{ width: '20rem' }}
+            sx={{
+              width: '20rem',
+              '& .MuiInputBase-root.MuiInput-root': {
+                color: '#DDDDDD',
+              },
+              '& .MuiInputLabel-root': {
+                color: '#DDDDDD',
+              },
+            }}
             error={message === '' && errorField}
             helperText={
               errorField && message === '' ? 'message is required' : ''
