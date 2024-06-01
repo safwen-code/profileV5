@@ -1,11 +1,20 @@
 import React, { useState } from 'react'
-import { Alert, Divider, Grid, Button } from '@mui/material'
+import {
+  Alert,
+  Divider,
+  Grid,
+  Button,
+  Typography,
+  Box,
+  Avatar,
+} from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import TextField from '@mui/material/TextField'
 import emailjs from '@emailjs/browser'
 import Paper from '@mui/material/Paper'
-import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
+import phone from '../../image/phone.mp4'
+import RoundedVideo from './RoundedVideo'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -67,17 +76,55 @@ const Contact = () => {
   }
   return (
     <>
-      <Stack spacing={2} mt={3} height={8} mb={2}>
-        <Item
-          sx={{
-            bgcolor: '#49243E',
-            border: '1px solid #E2DFD0',
-            color: '#DDDDDD',
-          }}
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          m: 4,
+          mb: 2,
+        }}
+      >
+        <Typography
+          variant="h3"
+          component="h3"
+          align="left"
+          sx={{ color: '#DDDDDD' }}
         >
           Contact Me
-        </Item>
-      </Stack>
+        </Typography>
+        <Divider sx={{ flex: 1, borderColor: '#D74B76', ml: 2 }} />
+      </Box>
+
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid item xs={6}>
+          <Item
+            sx={{
+              bgcolor: '#49243E',
+              border: '1px solid #E2DFD0',
+              display: 'flex',
+            }}
+          >
+            {' '}
+            <RoundedVideo src={phone} />
+            <Grid sx={{ marginLeft: '20px' }}>
+              <Typography component="h3" sx={{ color: '#DDDDDD' }}>
+                Phone N° :
+              </Typography>
+              <Typography
+                component="span"
+                sx={{ color: '#DDDDDD', marginLeft: '30px' }}
+              >
+                +216 26 406 437
+              </Typography>
+            </Grid>
+          </Item>
+        </Grid>
+        <Grid item xs={6}>
+          <Item sx={{ bgcolor: '#49243E', border: '1px solid #E2DFD0' }}>
+            2
+          </Item>
+        </Grid>
+      </Grid>
 
       <Grid spacing={2} pt={6} mt={3} direction="column">
         <Divider sx={{ borderColor: '#D74B76' }} />
