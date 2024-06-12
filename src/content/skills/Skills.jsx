@@ -59,6 +59,16 @@ const Skills = ({ props }) => {
       clearInterval(timer3)
     }
   }, [])
+  let softskill = [
+    { name: 'html', count: 100 },
+    { name: 'css', count: 60 },
+    { name: 'js', count: 75 },
+    { name: 'Dom', count: 70 },
+    { name: 'react', count: 80 },
+    { name: 'reactN', count: 60 },
+    { name: 'vuejs', count: 60 },
+    { name: 'php', count: 70 },
+  ]
   return (
     <>
       {/* CircularProgressbar fixed */}
@@ -68,255 +78,44 @@ const Skills = ({ props }) => {
         animate="visible"
       >
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <motion.div variants={gridItemVariants}>
-              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
-                {(percentage) => {
-                  return (
-                    <div className="skill-card">
-                      <CircularProgressbar
-                        value={percentage}
-                        text={`${percentage}%`}
-                        styles={buildStyles({
-                          pathTransitionDuration: 0.15,
-                        })}
-                      />
-                      <p className="skill-name">HTML</p>
-                    </div>
-                  )
+          {softskill.map((skill, index) => {
+            return (
+              <Grid
+                key={index}
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
-              </AnimatedProgressProvider>
-            </motion.div>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <motion.div variants={gridItemVariants}>
-              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
-                {(percentage) => {
-                  return (
-                    <div className="skill-card">
-                      <CircularProgressbar
-                        value={percentage}
-                        text={`${percentage}%`}
-                        styles={buildStyles({
-                          pathTransitionDuration: 0.15,
-                        })}
-                      />
-                      <p className="skill-name">HTML</p>
-                    </div>
-                  )
-                }}
-              </AnimatedProgressProvider>
-            </motion.div>
-          </Grid>
-
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <motion.div variants={gridItemVariants}>
-              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
-                {(percentage) => {
-                  return (
-                    <div className="skill-card">
-                      <CircularProgressbar
-                        value={percentage}
-                        text={`${percentage}%`}
-                        styles={buildStyles({
-                          pathTransitionDuration: 0.15,
-                        })}
-                      />
-                      <p className="skill-name">HTML</p>
-                    </div>
-                  )
-                }}
-              </AnimatedProgressProvider>
-            </motion.div>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <motion.div variants={gridItemVariants}>
-              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
-                {(percentage) => {
-                  return (
-                    <div className="skill-card">
-                      <CircularProgressbar
-                        value={percentage}
-                        text={`${percentage}%`}
-                        styles={buildStyles({
-                          pathTransitionDuration: 0.15,
-                        })}
-                      />
-                      <p className="skill-name">HTML</p>
-                    </div>
-                  )
-                }}
-              </AnimatedProgressProvider>
-            </motion.div>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <motion.div variants={gridItemVariants}>
-              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
-                {(percentage) => {
-                  return (
-                    <div className="skill-card">
-                      <CircularProgressbar
-                        value={percentage}
-                        text={`${percentage}%`}
-                        styles={buildStyles({
-                          pathTransitionDuration: 0.15,
-                        })}
-                      />
-                      <p className="skill-name">HTML</p>
-                    </div>
-                  )
-                }}
-              </AnimatedProgressProvider>
-            </motion.div>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <motion.div variants={gridItemVariants}>
-              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
-                {(percentage) => {
-                  return (
-                    <div className="skill-card">
-                      <CircularProgressbar
-                        value={percentage}
-                        text={`${percentage}%`}
-                        styles={buildStyles({
-                          pathTransitionDuration: 0.15,
-                        })}
-                      />
-                      <p className="skill-name">HTML</p>
-                    </div>
-                  )
-                }}
-              </AnimatedProgressProvider>
-            </motion.div>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <motion.div variants={gridItemVariants}>
-              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
-                {(percentage) => {
-                  return (
-                    <div className="skill-card">
-                      <CircularProgressbar
-                        value={percentage}
-                        text={`${percentage}%`}
-                        styles={buildStyles({
-                          pathTransitionDuration: 0.15,
-                        })}
-                      />
-                      <p className="skill-name">HTML</p>
-                    </div>
-                  )
-                }}
-              </AnimatedProgressProvider>
-            </motion.div>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <motion.div variants={gridItemVariants}>
-              <AnimatedProgressProvider values={[0, 20, 40, 60, 80]}>
-                {(percentage) => {
-                  return (
-                    <div className="skill-card">
-                      <CircularProgressbar
-                        value={percentage}
-                        text={`${percentage}%`}
-                        styles={buildStyles({
-                          pathTransitionDuration: 0.15,
-                        })}
-                      />
-                      <p className="skill-name">HTML</p>
-                    </div>
-                  )
-                }}
-              </AnimatedProgressProvider>
-            </motion.div>
-          </Grid>
+              >
+                <motion.div variants={gridItemVariants}>
+                  <AnimatedProgressProvider
+                    values={[0, 20, 40, 50, skill.count]}
+                  >
+                    {(percentage) => {
+                      return (
+                        <div className="skill-card">
+                          <CircularProgressbar
+                            value={percentage}
+                            text={`${percentage}%`}
+                            styles={buildStyles({
+                              pathTransitionDuration: 0.15,
+                            })}
+                          />
+                          <p className="skill-name">{skill.name}</p>
+                        </div>
+                      )
+                    }}
+                  </AnimatedProgressProvider>
+                </motion.div>
+              </Grid>
+            )
+          })}
         </Grid>
       </motion.div>
 
