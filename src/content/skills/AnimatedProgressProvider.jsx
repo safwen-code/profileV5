@@ -8,7 +8,7 @@ const AnimatedProgressProvider = ({ interval = 1000, values, children }) => {
     intervalRef.current = setInterval(() => {
       setValuesIndex((prevIndex) => {
         const nextIndex = (prevIndex + 1) % values.length
-        if (values[nextIndex] === 80) {
+        if (nextIndex === values.length - 1) {
           clearInterval(intervalRef.current)
         }
         return nextIndex
