@@ -94,8 +94,9 @@ const Project = () => {
                   opacity: '0.9',
                   display: 'flex',
                   padding: 2,
-                  bgcolor: '#49243E',
-                  border: '1px solid #E2DFD0',
+                  borderColor: '#2C3E50',
+                  borderRadius: '10px',
+                  bgcolor: '#34495E',
                 }}
               >
                 <CardMedia
@@ -139,8 +140,9 @@ const Project = () => {
                   opacity: '0.9',
                   display: 'flex',
                   padding: 2,
-                  bgcolor: '#49243E',
-                  border: '1px solid #E2DFD0',
+                  borderColor: '#2C3E50',
+                  borderRadius: '10px',
+                  bgcolor: '#34495E',
                 }}
               >
                 <CardMedia
@@ -184,8 +186,9 @@ const Project = () => {
                   opacity: '0.9',
                   display: 'flex',
                   padding: 2,
-                  bgcolor: '#49243E',
-                  border: '1px solid #E2DFD0',
+                  borderColor: '#2C3E50',
+                  borderRadius: '10px',
+                  bgcolor: '#34495E',
                 }}
               >
                 <CardMedia
@@ -229,8 +232,9 @@ const Project = () => {
                   opacity: '0.9',
                   display: 'flex',
                   padding: 2,
-                  bgcolor: '#49243E',
-                  border: '1px solid #E2DFD0',
+                  borderColor: '#2C3E50',
+                  borderRadius: '10px',
+                  bgcolor: '#34495E',
                 }}
               >
                 <CardMedia
