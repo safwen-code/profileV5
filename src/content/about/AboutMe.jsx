@@ -28,11 +28,10 @@ import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
 // import cv from './cv.pdf'
 // import { saveAs } from 'file-saver'
 import { IconButton } from '@mui/material'
-
 const style = {
   width: '100%',
   // maxWidth: 360,
-  bgcolor: '#32012F',
+  bgcolor: '#2C3E50',
 }
 
 let styles = {
@@ -81,7 +80,9 @@ const AboutMe = () => {
 
       <Box sx={{ zIndex: 1, margin: 2 }}>
         <List sx={style} component="div" aria-label="mailbox folders">
-          <ListItem>
+          <ListItem
+            sx={{ color: '#ECF0F1', bgcolor: '#34495E', borderRadius: '4px' }}
+          >
             <ListItemText
               sx={{
                 color: '#5c6bc0',
@@ -100,7 +101,14 @@ const AboutMe = () => {
             />
           </ListItem>
           <Divider sx={{ marginTop: '10px', borderColor: '#E2DFD0' }} />
-          <ListItem divider>
+          <ListItem
+            divider
+            sx={{
+              bgcolor: '#3B536D',
+              borderRadius: '4px',
+              margin: '10px 10px 10px 0',
+            }}
+          >
             <ListItemText
               sx={{
                 color: '#E2DFD0',
@@ -130,6 +138,8 @@ const AboutMe = () => {
               display: 'flex',
               justifyContent: 'center',
               marginTop: '10px',
+              bgcolor: '#34495E',
+              borderRadius: '4px',
             }}
           >
             <Card sx={{ marginRight: '5px' }}>
@@ -160,10 +170,10 @@ const AboutMe = () => {
         <List
           sx={{
             border: 1,
-            borderColor: 'secondary.main',
+            borderColor: '#2C3E50',
             borderRadius: '10px',
             marginTop: '10px',
-            backgroundColor: '#49243E',
+            bgcolor: '#34495E',
           }}
         >
           <ListItem disablePadding>
@@ -247,11 +257,16 @@ const AboutMe = () => {
           variant="outlined"
           sx={{
             marginTop: '20px',
-            marginBottom: '20px',
-            height: '50px',
-            color: '#D6DAC8',
+            height: '48px',
+            color: '#ECF0F1', // Light gray for text
             borderRadius: '10px',
-            borderColor: '#D6DAC8',
+            borderColor: '#2A3E56', // Soft gold for border
+            backgroundColor: '#5A6A82', // Lighter shade of blue-gray for background
+            '&:hover': {
+              backgroundColor: '#2A3E56', // Darker shade of blue-gray for hover
+              borderColor: '#D4AF37', // Soft gold for hover border
+              color: '#ECF0F1', // Keeping text color same on hover
+            },
           }}
           endIcon={<CloudDownloadIcon />}
           // onClick={() => DownloadCV()}
