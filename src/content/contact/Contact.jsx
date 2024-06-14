@@ -16,6 +16,7 @@ import { styled } from '@mui/material/styles'
 import RoundedVideo from './RoundedVideo'
 import phone from '../../image/phone.mp4'
 import mail from '../../image/mail.mp4'
+import { useTheme } from '@mui/material/styles'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -75,8 +76,10 @@ const Contact = () => {
         )
     }
   }
+  const theme = useTheme()
   return (
     <>
+      {/* /* head  thing*/}
       <Box
         sx={{
           display: 'flex',
@@ -96,19 +99,28 @@ const Contact = () => {
         <Divider sx={{ flex: 1, borderColor: '#D74B76', ml: 2 }} />
       </Box>
 
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={6}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
           <Item
             sx={{
-              bgcolor: '#49243E',
+              bgcolor: '#34495E',
               border: '1px solid #E2DFD0',
               display: 'flex',
             }}
           >
             {' '}
-            <RoundedVideo src={phone} />
-            <Grid sx={{ marginLeft: '20px' }}>
-              <Typography component="h3" sx={{ color: '#DDDDDD' }}>
+            <Grid>
+              <RoundedVideo src={phone} />
+            </Grid>
+            <Grid
+              sx={{
+                marginLeft: '20px',
+                [theme.breakpoints.down('sm')]: {
+                  marginLeft: '1px',
+                },
+              }}
+            >
+              <Typography component={'h3'} sx={{ color: '#DDDDDD' }}>
                 Phone N° :
               </Typography>
               <Typography
@@ -120,19 +132,32 @@ const Contact = () => {
             </Grid>
           </Item>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Item
             sx={{
-              bgcolor: '#49243E',
+              bgcolor: '#34495E',
               border: '1px solid #E2DFD0',
               display: 'flex',
             }}
           >
             {' '}
-            <RoundedVideo src={mail} />
-            <Grid sx={{ marginLeft: '20px' }}>
-              <Typography component="h3" sx={{ color: '#DDDDDD' }}>
-                Email :
+            <Grid>
+              <RoundedVideo src={phone} />
+            </Grid>
+            <Grid
+              sx={{
+                marginLeft: '10px',
+                flexDirection: 'column',
+                [theme.breakpoints.down('sm')]: {
+                  marginLeft: '1px',
+                },
+              }}
+            >
+              <Typography
+                component="h3"
+                sx={{ color: '#DDDDDD', marginRight: '120px' }}
+              >
+                Email N° :
               </Typography>
               <Typography
                 component="span"
