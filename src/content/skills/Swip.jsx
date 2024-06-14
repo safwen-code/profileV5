@@ -59,10 +59,21 @@ function SwipeableTextMobileStepper() {
           alignItems: 'center',
           height: 50,
           pl: 2,
-          bgcolor: 'background.default',
+          bgcolor: '#3B536D',
+          borderRadius: '10px',
         }}
       >
-        <Typography>{images[activeStep].label}</Typography>
+        <Typography
+          color="#E2DFD0"
+          ml={3}
+          sx={{
+            [theme.breakpoints.down('sm')]: {
+              margin: 'auto',
+            },
+          }}
+        >
+          {images[activeStep].label}
+        </Typography>
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -71,20 +82,46 @@ function SwipeableTextMobileStepper() {
         enableMouseEvents
       >
         {images.map((step, index) => (
-          <div key={step.label}>
+          <Grid
+            key={step.label}
+            sx={{
+              marginLeft: '50px',
+              [theme.breakpoints.down('md')]: {
+                marginLeft: '2px',
+              },
+            }}
+          >
             {Math.abs(activeStep - index) <= 2 ? (
-              <Grid container spacing={6} mt={4} mb={4}>
+              <Grid
+                container
+                spacing={3}
+                mt={0.1}
+                mb={4}
+                sx={{
+                  flexDirection: { xs: 'column', sm: 'row' },
+                }}
+              >
                 {step.imgPath.map((img, index) => (
-                  <Grid item xs={12} sm={6} md={4} key={index}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    key={index}
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
                     <motion.div variants={gridItemVariants}>
                       <Card
                         sx={{
-                          height: 170,
-                          maxWidth: 345,
+                          height: { xs: '120px', md: '120px', sm: '60px' },
+                          width: { xs: '140px', md: '160px', sm: '120px' },
                           background: `url(${img})`,
                           backgroundSize: 'cover',
                           backgroundPosition: 'center',
-                          opacity: '0.9',
                         }}
                       ></Card>
                     </motion.div>
@@ -92,13 +129,20 @@ function SwipeableTextMobileStepper() {
                 ))}
               </Grid>
             ) : null}
-          </div>
+          </Grid>
         ))}
       </AutoPlaySwipeableViews>
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          mt: 2,
+        }}
+      >
         <MobileStepper
           steps={maxSteps}
           position="static"
+          sx={{ bgcolor: '#3B536D', borderRadius: '10px' }}
           activeStep={activeStep}
         />
       </Box>
