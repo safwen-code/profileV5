@@ -7,6 +7,7 @@ import AnimatedProgressProvider from './AnimatedProgressProvider'
 import SwipeableTextMobileStepper from './Swip'
 import 'react-circular-progressbar/dist/styles.css'
 import './skill.css'
+import { useTheme } from '@mui/material/styles'
 
 const gridItemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -18,6 +19,7 @@ const gridContainerVariants = {
 }
 
 const Skills = ({ props }) => {
+  const theme = useTheme()
   const [progress1, setProgress1] = useState(0)
   const [progress2, setProgress2] = useState(0)
   const [progress3, setProgress3] = useState(0)
@@ -67,7 +69,13 @@ const Skills = ({ props }) => {
     { name: 'react', count: 80 },
     { name: 'reactN', count: 60 },
     { name: 'vuejs', count: 60 },
-    { name: 'php', count: 70 },
+    { name: 'angular', count: 50 },
+  ]
+
+  let skills = [
+    { name: 'Php', progress: progress1 },
+    { name: 'Node js', progress: progress2 },
+    { name: 'C Sharp', progress: progress3 },
   ]
   return (
     <>
@@ -82,10 +90,10 @@ const Skills = ({ props }) => {
             <Grid
               key={index}
               item
-              xs={6} // 2 items per row on extra small screens
-              sm={4} // 3 items per row on small screens
-              md={3} // 4 items per row on medium screens
-              lg={3} // 4 items per row on large screens
+              xs={6}
+              sm={4}
+              md={3}
+              lg={3}
               sx={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -122,90 +130,66 @@ const Skills = ({ props }) => {
           spacing={4}
           sx={{
             display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
+            flexDirection: { xs: 'column', md: 'row', sm: 'column' },
             alignItems: 'flex-start',
           }}
         >
           <Grid item xs={12} md={8}>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Grid container item alignItems="center">
-                <Typography
-                  variant="body2"
-                  sx={{ color: '#DDDDDD', marginLeft: 2, marginRight: 2 }}
+              {skills.map((skill, index) => (
+                <Grid
+                  container
+                  item
+                  alignItems="center"
+                  key={index}
+                  sx={{ flexWrap: 'nowrap' }}
                 >
-                  JavaScript
-                </Typography>
-                <LinearProgress
-                  variant="determinate"
-                  value={progress1}
-                  sx={{
-                    marginTop: 3,
-                    marginBottom: 2,
-                    width: { xs: '100%', sm: '100%', md: '450px' },
-                    height: 10,
-                    borderRadius: 5,
-                  }}
-                />
-                <Typography
-                  variant="body2"
-                  sx={{ color: '#DDDDDD', marginLeft: 2 }}
-                >
-                  {`${progress1}%`}
-                </Typography>
-              </Grid>
-              <Grid container item alignItems="center">
-                <Typography
-                  variant="body2"
-                  sx={{ color: '#DDDDDD', marginLeft: 2, marginRight: 2 }}
-                >
-                  Jquery, DOM
-                </Typography>
-                <LinearProgress
-                  variant="determinate"
-                  value={progress2}
-                  sx={{
-                    marginTop: 3,
-                    marginBottom: 2,
-                    width: { xs: '100%', sm: '100%', md: '450px' },
-                    height: 10,
-                    borderRadius: 5,
-                  }}
-                />
-                <Typography
-                  variant="body2"
-                  sx={{ color: '#DDDDDD', marginLeft: 2 }}
-                >
-                  {`${progress2}%`}
-                </Typography>
-              </Grid>
-              <Grid container item alignItems="center">
-                <Typography
-                  variant="body2"
-                  sx={{ color: '#DDDDDD', marginLeft: 2, marginRight: 2 }}
-                >
-                  Vanilla JavaScript
-                </Typography>
-                <LinearProgress
-                  variant="determinate"
-                  value={progress3}
-                  sx={{
-                    marginTop: 3,
-                    marginBottom: 2,
-                    width: { xs: '100%', sm: '100%', md: '450px' },
-                    height: 10,
-                    borderRadius: 5,
-                  }}
-                />
-                <Typography
-                  variant="body2"
-                  sx={{ color: '#DDDDDD', marginLeft: 2 }}
-                >
-                  {`${progress3}%`}
-                </Typography>
-              </Grid>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: '#DDDDDD',
+                      marginLeft: 2,
+                      marginRight: 2,
+                      minWidth: '80px',
+                    }}
+                  >
+                    {skill.name}
+                  </Typography>
+                  <Box sx={{ flexGrow: 1, marginRight: 2 }}>
+                    <LinearProgress
+                      variant="determinate"
+                      value={skill.progress}
+                      sx={{
+                        marginTop: 3,
+                        marginBottom: 2,
+                        height: 10,
+                        borderRadius: 5,
+                        width: '100%',
+                        [theme.breakpoints.down('md')]: {
+                          width: '20rem',
+                        },
+                        [theme.breakpoints.down('sm')]: {
+                          width: '7rem',
+                        },
+                      }}
+                    />
+                  </Box>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: '#DDDDDD',
+                      marginLeft: 2,
+                      minWidth: '40px',
+                      textAlign: 'right',
+                    }}
+                  >
+                    {`${skill.progress}%`}
+                  </Typography>
+                </Grid>
+              ))}
             </Box>
           </Grid>
-          <Grid item xs={12} md={4} sx={{ mt: { xs: 2, md: 0 } }}>
+          <Grid item xs={12} md={4} sx={{ mt: { xs: 2, md: 0 } }} mt={1}>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
               <Chip label="Postman" variant="outlined" color="secondary" />
               <Chip label="VSCode" variant="outlined" color="secondary" />
