@@ -78,47 +78,40 @@ const Skills = ({ props }) => {
         animate="visible"
       >
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          {softskill.map((skill, index) => {
-            return (
-              <Grid
-                key={index}
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                lg={3}
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <motion.div variants={gridItemVariants}>
-                  <AnimatedProgressProvider
-                    values={[0, 20, 40, 50, skill.count]}
-                  >
-                    {(percentage) => {
-                      return (
-                        <div className="skill-card">
-                          <CircularProgressbar
-                            value={percentage}
-                            text={`${percentage}%`}
-                            styles={buildStyles({
-                              pathTransitionDuration: 0.15,
-                            })}
-                          />
-                          <p className="skill-name">{skill.name}</p>
-                        </div>
-                      )
-                    }}
-                  </AnimatedProgressProvider>
-                </motion.div>
-              </Grid>
-            )
-          })}
+          {softskill.map((skill, index) => (
+            <Grid
+              key={index}
+              item
+              xs={6} // 2 items per row on extra small screens
+              sm={4} // 3 items per row on small screens
+              md={3} // 4 items per row on medium screens
+              lg={3} // 4 items per row on large screens
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <motion.div variants={gridItemVariants}>
+                <AnimatedProgressProvider values={[0, 20, 40, 50, skill.count]}>
+                  {(percentage) => (
+                    <div className="skill-card">
+                      <CircularProgressbar
+                        value={percentage}
+                        text={`${percentage}%`}
+                        styles={buildStyles({
+                          pathTransitionDuration: 0.15,
+                        })}
+                      />
+                      <p className="skill-name">{skill.name}</p>
+                    </div>
+                  )}
+                </AnimatedProgressProvider>
+              </motion.div>
+            </Grid>
+          ))}
         </Grid>
       </motion.div>
-
       <Divider sx={{ borderColor: '#D74B76' }} />
 
       {/* pogrsseve bar fixed */}
