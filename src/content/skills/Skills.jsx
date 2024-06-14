@@ -189,8 +189,20 @@ const Skills = ({ props }) => {
               ))}
             </Box>
           </Grid>
-          <Grid item xs={12} md={4} sx={{ mt: { xs: 2, md: 0 } }} mt={1}>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+          <Grid item xs={12} md={4} sx={{ mt: { xs: 2, md: 2 } }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 1,
+                [theme.breakpoints.down('md')]: {
+                  mb: 4,
+                },
+                [theme.breakpoints.down('sm')]: {
+                  mb: 4,
+                },
+              }}
+            >
               <Chip label="Postman" variant="outlined" color="secondary" />
               <Chip label="VSCode" variant="outlined" color="secondary" />
               <Chip label="Eclipse" variant="outlined" color="secondary" />
