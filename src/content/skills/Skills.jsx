@@ -135,27 +135,37 @@ const Skills = ({ props }) => {
           }}
         >
           <Grid item xs={12} md={8}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2,
+                [theme.breakpoints.down('sm')]: {
+                  float: 'right',
+                },
+              }}
+            >
               {skills.map((skill, index) => (
                 <Grid
                   container
                   item
                   alignItems="center"
                   key={index}
-                  sx={{ flexWrap: 'nowrap' }}
+                  sx={{
+                    flexWrap: 'nowrap',
+                  }}
                 >
                   <Typography
                     variant="body2"
                     sx={{
                       color: '#DDDDDD',
-                      marginLeft: 2,
-                      marginRight: 2,
                       minWidth: '80px',
                     }}
+                    mt={1}
                   >
                     {skill.name}
                   </Typography>
-                  <Box sx={{ flexGrow: 1, marginRight: 2 }}>
+                  <Box sx={{ flexGrow: 1 }}>
                     <LinearProgress
                       variant="determinate"
                       value={skill.progress}
@@ -166,19 +176,20 @@ const Skills = ({ props }) => {
                         borderRadius: 5,
                         width: '100%',
                         [theme.breakpoints.down('md')]: {
-                          width: '20rem',
+                          width: '24rem',
                         },
                         [theme.breakpoints.down('sm')]: {
-                          width: '7rem',
+                          width: '11rem',
                         },
                       }}
                     />
                   </Box>
                   <Typography
                     variant="body2"
+                    mt={1}
                     sx={{
                       color: '#DDDDDD',
-                      marginLeft: 2,
+                      marginLeft: 1,
                       minWidth: '40px',
                       textAlign: 'right',
                     }}

@@ -1,13 +1,5 @@
-import React, { useState } from 'react'
-import {
-  Alert,
-  Divider,
-  Grid,
-  Button,
-  Typography,
-  Box,
-  Avatar,
-} from '@mui/material'
+import React, { useRef, useState } from 'react'
+import { Alert, Divider, Grid, Button, Typography, Box } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import TextField from '@mui/material/TextField'
 import emailjs from '@emailjs/browser'
@@ -27,37 +19,42 @@ const Item = styled(Paper)(({ theme }) => ({
 }))
 
 const Contact = () => {
+  const formRef = useRef()
+
   const [formdata, setformdata] = useState({
     name: '',
     email: '',
     message: '',
   })
-
   const [alertVisible, setAlertVisible] = useState(false)
   const [errorField, seterrorField] = useState(false)
+
   const { name, email, message } = formdata
   const ChangeHundel = (e) => {
-    setformdata({ ...formdata, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setformdata({ ...formdata, [name]: value })
   }
+
   const submitHundel = (e) => {
     e.preventDefault()
-    //console.log(Contact)
+    const { name, email, message } = formdata
+
     if (name === '' || email === '' || message === '') {
       seterrorField(true)
       setTimeout(() => {
         seterrorField(false)
       }, 5000)
     } else {
+      // const Data = new FormData(formRef.current)
       emailjs
-        .send(
-          'service_ctwp9zo',
+        .sendForm(
+          'service_8p55toe',
           'template_nf8js4z',
-          formdata,
-          'MCWeJugFmMWwVfeiC',
+          formRef.current,
+          'GJr-oEbl07Zhj9ju2',
         )
         .then(
           function (response) {
-            //console.log('SUCCESS!', response.status, response.text)
             if (response.status === 200) {
               setAlertVisible(true)
               setTimeout(() => {
@@ -77,6 +74,7 @@ const Contact = () => {
     }
   }
   const theme = useTheme()
+
   return (
     <>
       {/* /* head  thing*/}
@@ -99,6 +97,7 @@ const Contact = () => {
         <Divider sx={{ flex: 1, borderColor: '#D74B76', ml: 2 }} />
       </Box>
 
+      {/* /* info  thing*/}
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <Item
@@ -142,7 +141,7 @@ const Contact = () => {
           >
             {' '}
             <Grid>
-              <RoundedVideo src={phone} />
+              <RoundedVideo src={mail} />
             </Grid>
             <Grid
               sx={{
@@ -157,7 +156,7 @@ const Contact = () => {
                 component="h3"
                 sx={{ color: '#DDDDDD', marginRight: '120px' }}
               >
-                Email N° :
+                Email :
               </Typography>
               <Typography
                 component="span"
@@ -169,85 +168,98 @@ const Contact = () => {
           </Item>
         </Grid>
       </Grid>
-
-      <Grid spacing={2} pt={6} mt={3} direction="column">
-        <Divider sx={{ borderColor: '#D74B76' }} />
-        <Grid item xs={12} sm={6} mt={3}>
-          <TextField
-            sx={{
-              width: '20rem',
-              '& .MuiInputBase-root.MuiInput-root': {
-                color: '#DDDDDD',
-              },
-              '& .MuiInputLabel-root': {
-                color: '#DDDDDD',
-              },
-            }}
-            error={name === '' && errorField}
-            helperText={errorField && name === '' ? 'Name is required' : ''}
-            required
-            id="standard-read-only-input"
-            label="your name please"
-            variant="standard"
-            margin="dense"
-            name="name"
-            value={name}
-            onChange={ChangeHundel}
-            style={{ marginRight: '5px' }}
-          />
+      {/* /* form   thing*/}
+      <form ref={formRef}>
+        <Grid spacing={2} pt={2} mt={1} direction="column">
+          <Divider sx={{ borderColor: '#D74B76' }} />
+          <Grid item xs={12} sm={6} md={8} mt={3}>
+            <TextField
+              sx={{
+                width: '20rem',
+                '& .MuiInputBase-root.MuiInput-root': {
+                  color: '#DDDDDD',
+                },
+                '& .MuiInputLabel-root': {
+                  color: '#DDDDDD',
+                },
+              }}
+              error={name === '' && errorField}
+              helperText={errorField && name === '' ? 'Name is required' : ''}
+              required
+              id="standard-read-only-input"
+              label="your name please"
+              variant="standard"
+              margin="dense"
+              name="name"
+              value={name}
+              onChange={ChangeHundel}
+              style={{ marginRight: '5px' }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={8} mt={3}>
+            <TextField
+              sx={{
+                width: '20rem',
+                '& .MuiInputBase-root.MuiInput-root': {
+                  color: '#DDDDDD',
+                },
+                '& .MuiInputLabel-root': {
+                  color: '#DDDDDD',
+                },
+              }}
+              error={email === '' && errorField}
+              helperText={errorField && email === '' ? 'Email is required' : ''}
+              required
+              id="standard-read-only-input"
+              label="your email please"
+              variant="standard"
+              margin="dense"
+              name="email"
+              value={email}
+              color="secondary"
+              onChange={ChangeHundel}
+            />{' '}
+          </Grid>
+          <Grid item xs={12} sm={6} md={8} mt={3}>
+            <TextField
+              sx={{
+                width: '20rem',
+                '& .MuiInputBase-root': {
+                  color: '#DDDDDD',
+                },
+                '& .MuiInputLabel-root': {
+                  color: '#DDDDDD',
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: '#DDDDDD',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#AAAAAA',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#888888',
+                  },
+                },
+              }}
+              error={message === '' && errorField}
+              helperText={
+                errorField && message === '' ? 'Message is required' : ''
+              }
+              required
+              label="message please"
+              id="fullWidth"
+              margin="dense"
+              multiline
+              rows={4}
+              color="success"
+              name="message"
+              value={message}
+              onChange={ChangeHundel}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} mt={3}>
-          <TextField
-            sx={{
-              width: '20rem',
-              '& .MuiInputBase-root.MuiInput-root': {
-                color: '#DDDDDD',
-              },
-              '& .MuiInputLabel-root': {
-                color: '#DDDDDD',
-              },
-            }}
-            error={email === '' && errorField}
-            helperText={errorField && email === '' ? 'Email is required' : ''}
-            required
-            id="standard-read-only-input"
-            label="your email please"
-            variant="standard"
-            margin="dense"
-            name="email"
-            value={email}
-            color="secondary"
-            onChange={ChangeHundel}
-          />{' '}
-        </Grid>
-        <Grid item xs={12} sm={6} mt={3}>
-          <TextField
-            sx={{
-              width: '20rem',
-              '& .MuiInputBase-root.MuiInput-root': {
-                color: '#DDDDDD',
-              },
-              '& .MuiInputLabel-root': {
-                color: '#DDDDDD',
-              },
-            }}
-            error={message === '' && errorField}
-            helperText={
-              errorField && message === '' ? 'Message is required' : ''
-            }
-            required
-            label="message please"
-            id="fullWidth"
-            margin="dense"
-            multiline
-            rows={4}
-            color="success"
-            name="message"
-            value={message}
-            onChange={ChangeHundel}
-          />
-        </Grid>
-      </Grid>
+      </form>
       <Button
         sx={{
           marginTop: '10px',
