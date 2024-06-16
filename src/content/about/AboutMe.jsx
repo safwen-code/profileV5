@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Typewriter from 'typewriter-effect'
 
 import {
@@ -13,8 +13,12 @@ import {
   Avatar,
   Box,
   Card,
+  Menu,
+  MenuItem,
 } from '@mui/material'
 
+import WordIcon from '@mui/icons-material/Description'
+import PDFIcon from '@mui/icons-material/PictureAsPdf'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import FacebookIcon from '@mui/icons-material/Facebook'
@@ -24,9 +28,12 @@ import PinDropIcon from '@mui/icons-material/PinDrop'
 import CakeIcon from '@mui/icons-material/Cake'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
 
-import cv from '../file/DjebbiSafwen.pdf'
 import { saveAs } from 'file-saver'
 import { IconButton } from '@mui/material'
+
+import cv from '../file/DjebbiSafwen.pdf'
+import cvdocs from '../file/DjebbiSafwen.docx'
+
 const style = {
   width: '100%',
   bgcolor: '#2C3E50',
@@ -38,18 +45,35 @@ let styles = {
 }
 
 const AboutMe = () => {
-  const DownloadCV = async () => {
-    console.log('download')
-    //console.log(cv)
-    fetch(cv)
+  const [anchorEl, setAnchorEl] = useState(null)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const downloadFile = (file, fileName) => {
+    fetch(file)
       .then((response) => response.blob())
       .then((blob) => {
-        // Trigger the download using FileSaver.js
-        saveAs(blob, 'DS-FullStackDev.pdf')
+        saveAs(blob, fileName)
       })
       .catch((error) => {
         console.error('Error downloading the file:', error)
       })
+  }
+
+  const handleDownloadPDF = () => {
+    downloadFile(cv, 'DjebbiSafwen.pdf')
+    handleClose()
+  }
+
+  const handleDownloadWord = () => {
+    downloadFile(cvdocs, 'DjebbiSafwen.docx')
+    handleClose()
   }
 
   const handleWhatsAppCall = () => {
@@ -251,26 +275,47 @@ const AboutMe = () => {
             </ListItemButton>
           </ListItem>
         </List>
-        <Button
-          variant="outlined"
-          sx={{
-            marginTop: '20px',
-            height: '48px',
-            color: '#ECF0F1', // Light gray for text
-            borderRadius: '10px',
-            borderColor: '#2A3E56', // Soft gold for border
-            backgroundColor: '#5A6A82', // Lighter shade of blue-gray for background
-            '&:hover': {
-              backgroundColor: '#2A3E56', // Darker shade of blue-gray for hover
-              borderColor: '#D4AF37', // Soft gold for hover border
-              color: '#ECF0F1', // Keeping text color same on hover
-            },
-          }}
-          endIcon={<CloudDownloadIcon />}
-          onClick={() => DownloadCV()}
+        <Box
+          sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}
         >
-          Télécharger CV
-        </Button>
+          <Button
+            variant="outlined"
+            sx={{
+              height: '48px',
+              color: '#ECF0F1',
+              borderRadius: '10px',
+              borderColor: '#2A3E56',
+              backgroundColor: '#5A6A82',
+              '&:hover': {
+                backgroundColor: '#2A3E56',
+                borderColor: '#D4AF37',
+                color: '#ECF0F1',
+              },
+            }}
+            endIcon={<CloudDownloadIcon />}
+            onClick={handleClick}
+          >
+            Télécharger CV
+          </Button>
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleDownloadPDF}>
+              <ListItemIcon>
+                <PDFIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Download as PDF" />
+            </MenuItem>
+            <MenuItem onClick={handleDownloadWord}>
+              <ListItemIcon>
+                <WordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Download as Word" />
+            </MenuItem>
+          </Menu>
+        </Box>
       </Box>
     </Box>
   )
