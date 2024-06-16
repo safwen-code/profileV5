@@ -24,13 +24,11 @@ import PinDropIcon from '@mui/icons-material/PinDrop'
 import CakeIcon from '@mui/icons-material/Cake'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
 
-// import './style.css'
-// import cv from './cv.pdf'
-// import { saveAs } from 'file-saver'
+import cv from '../file/DjebbiSafwen.pdf'
+import { saveAs } from 'file-saver'
 import { IconButton } from '@mui/material'
 const style = {
   width: '100%',
-  // maxWidth: 360,
   bgcolor: '#2C3E50',
 }
 
@@ -40,19 +38,19 @@ let styles = {
 }
 
 const AboutMe = () => {
-  // const DownloadCV = async () => {
-  //   console.log('download')
-  //   //console.log(cv)
-  //   fetch(cv)
-  //     .then((response) => response.blob())
-  //     .then((blob) => {
-  //       // Trigger the download using FileSaver.js
-  //       saveAs(blob, 'DS-FullStackDev.pdf')
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error downloading the file:', error)
-  //     })
-  // }
+  const DownloadCV = async () => {
+    console.log('download')
+    //console.log(cv)
+    fetch(cv)
+      .then((response) => response.blob())
+      .then((blob) => {
+        // Trigger the download using FileSaver.js
+        saveAs(blob, 'DS-FullStackDev.pdf')
+      })
+      .catch((error) => {
+        console.error('Error downloading the file:', error)
+      })
+  }
 
   const handleWhatsAppCall = () => {
     let phoneNumber = '+21626706437'
@@ -100,7 +98,7 @@ const AboutMe = () => {
               }
             />
           </ListItem>
-          <Divider sx={{ marginTop: '10px', borderColor: '#E2DFD0' }} />
+          <Divider sx={{ marginTop: '10px', borderColor: '#D74B76' }} />
           <ListItem
             divider
             sx={{
@@ -132,7 +130,7 @@ const AboutMe = () => {
               }
             />
           </ListItem>
-          <Divider sx={{ borderColor: '#E2DFD0' }} />
+          <Divider sx={{ borderColor: '#D74B76' }} />
           <ListItem
             sx={{
               display: 'flex',
@@ -187,7 +185,7 @@ const AboutMe = () => {
               <Divider
                 orientation="vertical"
                 flexItem
-                sx={{ borderColor: '#DDDDDD', marginRight: '20px' }}
+                sx={{ borderColor: '#D74B76', marginRight: '20px' }}
               />
               <ListItemText
                 primary="+216 26 706 437"
@@ -206,7 +204,7 @@ const AboutMe = () => {
               <Divider
                 orientation="vertical"
                 flexItem
-                sx={{ borderColor: '#DDDDDD', marginRight: '20px' }}
+                sx={{ borderColor: '#D74B76', marginRight: '20px' }}
               />
               <ListItemText
                 primary="safwendjebbi1234@gmail.com"
@@ -231,7 +229,7 @@ const AboutMe = () => {
               <Divider
                 orientation="vertical"
                 flexItem
-                sx={{ borderColor: '#DDDDDD', marginRight: '20px' }}
+                sx={{ borderColor: '#D74B76', marginRight: '20px' }}
               />
               <ListItemText
                 primary="Tunisie, Ben Arous"
@@ -247,7 +245,7 @@ const AboutMe = () => {
               <Divider
                 orientation="vertical"
                 flexItem
-                sx={{ borderColor: '#DDDDDD', marginRight: '20px' }}
+                sx={{ borderColor: '#D74B76', marginRight: '20px' }}
               />
               <ListItemText primary="20/08/1994" sx={{ color: '#DDDDDD' }} />
             </ListItemButton>
@@ -269,7 +267,7 @@ const AboutMe = () => {
             },
           }}
           endIcon={<CloudDownloadIcon />}
-          // onClick={() => DownloadCV()}
+          onClick={() => DownloadCV()}
         >
           Télécharger CV
         </Button>
