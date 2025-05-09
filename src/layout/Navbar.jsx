@@ -3,19 +3,29 @@ import {
   AppBar,
   Box,
   Toolbar,
-  Typography,
   Menu,
   Button,
   Container,
   MenuItem,
   Avatar,
+  Typography,
+  Grid,
 } from '@mui/material'
-
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
-// import safwe from '../images/safwe.jpg'
+import DescriptionIcon from '@mui/icons-material/Description'
+import WorkIcon from '@mui/icons-material/Work'
+import BuildIcon from '@mui/icons-material/Build'
+import ComputerIcon from '@mui/icons-material/Computer'
+import ContactMailIcon from '@mui/icons-material/ContactMail'
 
-const pages = ['description', 'project', 'skills', 'SW.Skills', 'contact']
+const pages = [
+  { name: 'description', icon: <DescriptionIcon /> },
+  { name: 'project', icon: <WorkIcon /> },
+  { name: 'skills', icon: <BuildIcon /> },
+  { name: 'SW.Skills', icon: <ComputerIcon /> },
+  { name: 'contact', icon: <ContactMailIcon /> },
+]
 
 const Navbar = ({ activeNavItem, setActiveNavItem }) => {
   const [anchorElNav, setAnchorElNav] = useState(null)
@@ -26,40 +36,7 @@ const Navbar = ({ activeNavItem, setActiveNavItem }) => {
 
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null)
-
-    switch (page) {
-      case 'description':
-        return setActiveNavItem('description')
-      case 'project':
-        return setActiveNavItem('project')
-      case 'skills':
-        return setActiveNavItem('skills')
-      case 'SW.Skills':
-        return setActiveNavItem('SW.Skills')
-      case 'contact':
-        return setActiveNavItem('contact')
-      default:
-        return setActiveNavItem('description')
-    }
-  }
-
-  //hundel content Movement
-  const hundelNavItem = (page) => {
-    console.log(page)
-    switch (page) {
-      case 'description':
-        return setActiveNavItem('description')
-      case 'project':
-        return setActiveNavItem('project')
-      case 'skills':
-        return setActiveNavItem('skills')
-      case 'SW.Skills':
-        return setActiveNavItem('SW.Skills')
-      case 'contact':
-        return setActiveNavItem('contact')
-      default:
-        return setActiveNavItem('description')
-    }
+    setActiveNavItem(page)
   }
 
   return (
@@ -67,31 +44,13 @@ const Navbar = ({ activeNavItem, setActiveNavItem }) => {
       mt={2}
       style={{ position: 'sticky', top: 0, zIndex: 999, margin: '40px' }}
     >
-      <AppBar position="static" sx={{ borderRadius: 2, bgcolor: '#32012F' }}>
+      <AppBar
+        position="static"
+        sx={{ borderRadius: 2, bgcolor: '#111', color: 'white' }}
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Avatar
-              // src={safwe}
-              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
-            />
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              Djebbi
-            </Typography>
-
+            {/* Mobile Menu */}
             <Box
               sx={{
                 flexGrow: 1,
@@ -100,7 +59,7 @@ const Navbar = ({ activeNavItem, setActiveNavItem }) => {
             >
               <IconButton
                 size="large"
-                aria-label="account of current user"
+                aria-label="menu"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
@@ -121,27 +80,49 @@ const Navbar = ({ activeNavItem, setActiveNavItem }) => {
                   horizontal: 'left',
                 }}
                 open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+                onClose={() => setAnchorElNav(null)}
                 sx={{
                   display: { xs: 'block', md: 'none' },
                 }}
+                PaperProps={{
+                  sx: {
+                    backgroundColor: '#111', // Set background for the floating menu
+                    borderRadius: 2,
+                    boxShadow: '0px 8px 20px rgba(0,0,0,0.4)',
+                    color: 'white',
+                  },
+                }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                    <Typography
-                      textAlign="center"
-                      onClick={() => hundelNavItem(page)}
-                    >
-                      {page}
+                  <MenuItem
+                    key={page.name}
+                    onClick={() => handleCloseNavMenu(page.name)}
+                    sx={{
+                      mb: 1,
+                      borderRadius: 2,
+                      background:
+                        activeNavItem === page.name
+                          ? 'linear-gradient(to right, #ff416c, #ff4b2b)'
+                          : 'transparent',
+                      color: activeNavItem === page.name ? 'white' : 'gray',
+                      boxShadow:
+                        activeNavItem === page.name
+                          ? '0 4px 15px rgba(255, 75, 43, 0.4)'
+                          : 'none',
+                    }}
+                  >
+                    {page.icon}
+                    <Typography textAlign="center" sx={{ ml: 1 }}>
+                      {page.name}
                     </Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
-            <Avatar
-              // src={safwe}
-              sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-            />
+
+            {/* Logo for mobile */}
+            <Avatar sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
             <Typography
               variant="h5"
               noWrap
@@ -161,21 +142,53 @@ const Navbar = ({ activeNavItem, setActiveNavItem }) => {
               DJEBBI
             </Typography>
 
+            {/* Desktop Buttons */}
             <Box
               sx={{
                 flexGrow: 1,
                 display: { xs: 'none', md: 'flex' },
+                justifyContent: 'center',
               }}
             >
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={() => handleCloseNavMenu(page)}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {page}
-                </Button>
-              ))}
+              <Grid container spacing={2} justifyContent="center">
+                {pages.map((page) => (
+                  <Grid item key={page.name}>
+                    <Button
+                      onClick={() => setActiveNavItem(page.name)}
+                      startIcon={page.icon}
+                      sx={{
+                        color: 'white',
+                        textTransform: 'capitalize',
+                        background:
+                          activeNavItem === page.name
+                            ? 'linear-gradient(to right, #ff416c, #ff4b2b)'
+                            : 'transparent',
+                        borderRadius: 2,
+                        boxShadow:
+                          activeNavItem === page.name
+                            ? '0 4px 15px rgba(255, 75, 43, 0.4)'
+                            : 'none',
+                        border:
+                          activeNavItem === page.name
+                            ? '2px solid #FFF'
+                            : 'none',
+                        '&:hover': {
+                          background:
+                            activeNavItem === page.name
+                              ? 'linear-gradient(to right, #ff416c, #ff4b2b)'
+                              : '#34495E',
+                          boxShadow:
+                            activeNavItem === page.name
+                              ? '0 6px 20px rgba(255, 75, 43, 0.5)'
+                              : 'none',
+                        },
+                      }}
+                    >
+                      {page.name}
+                    </Button>
+                  </Grid>
+                ))}
+              </Grid>
             </Box>
           </Toolbar>
         </Container>
