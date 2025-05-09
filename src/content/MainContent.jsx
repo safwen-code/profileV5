@@ -1,55 +1,79 @@
 import React, { useState } from 'react'
-import { Box, Container, Grid } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { Box, Container, Grid, useMediaQuery } from '@mui/material'
+import { styled, useTheme } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import Navbar from '../layout/Navbar'
 import AboutMe from './about/AboutMe'
 import Containers from './Containers.jsx'
+import { motion } from 'framer-motion'
 
-//define item
+// Define styled Item component
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  borderRadius: '25px',
 }))
 
 const MainContent = () => {
   const [activeNavItem, setActiveNavItem] = useState('description')
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md')) // Mobile detection
 
   return (
-    <>
-      <Container fixed maxWidth="xl">
+    <Container fixed maxWidth="xl">
+      {/* Display Navbar on mobile */}
+      {isMobile && (
         <Navbar
           activeNavItem={activeNavItem}
           setActiveNavItem={setActiveNavItem}
         />
-        <Box sx={{ flexGrow: 1 }} p={1} mt={1}>
-          <Grid container spacing={2} component="aside">
-            <Grid item xs={12} md={4}>
-              <Item sx={{ borderRadius: '25px', bgcolor: '#32012F' }}>
+      )}
+      <Box sx={{ flexGrow: 1 }} p={2} mt={2}>
+        <Grid container spacing={3}>
+          {/* Left Column */}
+          <Grid item xs={12} md={4} mt={6}>
+            <motion.div
+              className="box"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              transition={{ type: 'spring', stiffness: 100, damping: 10 }}
+            >
+              <Item sx={{ bgcolor: '#2C3E50', color: 'white' }}>
                 <AboutMe />
               </Item>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              md={8}
-              height={`${activeNavItem === 'contact' && '35rem'}`}
-            >
-              <Item
-                component="section"
-                sx={{ borderRadius: '25px', bgcolor: '#32012F' }}
-              >
-                {' '}
-                <Containers activeNavItem={activeNavItem} />{' '}
-              </Item>
-            </Grid>
+            </motion.div>
           </Grid>
-        </Box>
-      </Container>
-    </>
+
+          {/* Right Column */}
+          <Grid
+            item
+            xs={12}
+            md={8}
+            sx={{
+              height: activeNavItem === 'contact' ? '35rem' : 'auto',
+            }}
+          >
+            {/* Navbar for larger screens */}
+            {!isMobile && (
+              <Item sx={{ mb: 2, bgcolor: '#2C3E50', color: 'white' }}>
+                <Navbar
+                  activeNavItem={activeNavItem}
+                  setActiveNavItem={setActiveNavItem}
+                />
+              </Item>
+            )}
+
+            {/* Main Content */}
+            <Item sx={{ bgcolor: '#2C3E50', color: 'white' }}>
+              <Containers activeNavItem={activeNavItem} />
+            </Item>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   )
 }
 
