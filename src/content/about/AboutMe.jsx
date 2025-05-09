@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Typewriter from 'typewriter-effect'
+import { useSelector, useDispatch } from 'react-redux'
 
 import {
   Button,
@@ -15,24 +16,35 @@ import {
   Card,
   Menu,
   MenuItem,
+  Stack,
 } from '@mui/material'
 
 import WordIcon from '@mui/icons-material/Description'
 import PDFIcon from '@mui/icons-material/PictureAsPdf'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import FacebookIcon from '@mui/icons-material/Facebook'
 import OnDeviceTrainingIcon from '@mui/icons-material/OnDeviceTraining'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import PinDropIcon from '@mui/icons-material/PinDrop'
 import CakeIcon from '@mui/icons-material/Cake'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
+import {
+  Facebook,
+  LinkedIn,
+  Email,
+  Phone,
+  LocationOn,
+  Cake,
+  Download,
+  Twitter,
+} from '@mui/icons-material'
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball' // placeholder for Dribbble
 
 import { saveAs } from 'file-saver'
 import { IconButton } from '@mui/material'
 
 import cv from '../file/DjebbiSafwen.pdf'
 import cvdocs from '../file/DjebbiSafwen.docx'
+import { useEffect } from 'react'
+import { getprofile } from '../../action/profileAction'
 
 const style = {
   width: '100%',
@@ -44,9 +56,24 @@ let styles = {
   fontSize: '34px',
 }
 
+const socialButtons = [
+  { icon: <Facebook />, color: '#4267B2' },
+  { icon: <Twitter />, color: '#1DA1F2' },
+  { icon: <SportsBasketballIcon />, color: '#ea4c89' }, // Dribbble
+  { icon: <LinkedIn />, color: '#0077B5' },
+]
 const AboutMe = () => {
   const [anchorEl, setAnchorEl] = useState(null)
+  const dispatch = useDispatch()
+  const { about, loading, error } = useSelector((state) => state.profile)
 
+  useEffect(() => {
+    dispatch(getprofile())
+  }, [dispatch])
+
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>Error loading profile: {error}</div>
+  const { avatar, name, jobs, links, personaldata } = about
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
   }
@@ -86,24 +113,25 @@ const AboutMe = () => {
   }
   return (
     <Box sx={{ position: 'relative', paddingY: 7 }}>
-      <Box
+      <Avatar
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
+          width: 120,
+          height: 120,
           position: 'absolute',
-          top: -50,
-          left: 0,
-          right: 0,
-          zIndex: 3,
+          top: -60,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          borderRadius: 3,
+          border: '4px solid #111',
         }}
       >
-        <Avatar sx={{ height: 100, width: 100 }}>DS</Avatar>
-      </Box>
+        'Avatar'
+      </Avatar>
 
       <Box sx={{ zIndex: 1, margin: 2 }}>
         <List sx={style} component="div" aria-label="mailbox folders">
           <ListItem
-            sx={{ color: '#ECF0F1', bgcolor: '#34495E', borderRadius: '4px' }}
+            sx={{ color: '#ECF0F1', bgcolor: '#222', borderRadius: '4px' }}
           >
             <ListItemText
               sx={{
@@ -117,7 +145,7 @@ const AboutMe = () => {
                   style={styles}
                   sx={{ color: '#E2DFD0' }}
                 >
-                  Djebbi Safwen
+                  {about && name}
                 </Typography>
               }
             />
@@ -126,7 +154,7 @@ const AboutMe = () => {
           <ListItem
             divider
             sx={{
-              bgcolor: '#3B536D',
+              bgcolor: '#222',
               borderRadius: '4px',
               margin: '10px 10px 10px 0',
             }}
@@ -141,12 +169,7 @@ const AboutMe = () => {
               primary={
                 <Typewriter
                   options={{
-                    strings: [
-                      'FullStack Developer',
-                      'Web Developer',
-                      'Software Engineer',
-                      'Mobile Developer',
-                    ],
+                    strings: jobs,
                     autoStart: true,
                     loop: true,
                   }}
@@ -155,39 +178,31 @@ const AboutMe = () => {
             />
           </ListItem>
           <Divider sx={{ borderColor: '#D74B76' }} />
-          <ListItem
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginTop: '10px',
-              bgcolor: '#34495E',
-              borderRadius: '4px',
-            }}
+          {/* Social Buttons */}
+          <Stack
+            direction="row"
+            justifyContent="center"
+            spacing={1}
+            mb={2}
+            mt={2}
           >
-            <Card sx={{ marginRight: '5px' }}>
-              <IconButton href="https://github.com/safwen-code" target="_blank">
-                <GitHubIcon sx={{ color: '#212121' }} fontSize="medium" />
-              </IconButton>
-            </Card>
-            <Divider orientation="vertical" flexItem />
-            <Card sx={{ marginRight: '5px', marginLeft: '5px' }}>
+            {socialButtons.map((item, index) => (
               <IconButton
-                href="https://www.linkedin.com/in/safwen-djebbi-5a996b204/"
-                target="_blank"
+                key={index}
+                sx={{
+                  color: '#fff',
+                  backgroundColor: item.color,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.1)',
+                    boxShadow: `0 0 8px ${item.color}`,
+                  },
+                }}
               >
-                <LinkedInIcon sx={{ color: '#0e76a8' }} fontSize="medium" />
+                {item.icon}
               </IconButton>
-            </Card>
-            <Divider orientation="vertical" flexItem />
-            <Card sx={{ marginLeft: '5px' }}>
-              <IconButton
-                href="https://www.facebook.com/profile.php?id=100078734872887"
-                target="_blank"
-              >
-                <FacebookIcon sx={{ color: '#1877f2' }} fontSize="medium" />
-              </IconButton>
-            </Card>
-          </ListItem>
+            ))}
+          </Stack>
         </List>
         <List
           sx={{
@@ -195,15 +210,18 @@ const AboutMe = () => {
             borderColor: '#2C3E50',
             borderRadius: '10px',
             marginTop: '10px',
-            bgcolor: '#34495E',
+            bgcolor: '#222',
           }}
         >
           <ListItem disablePadding>
             <ListItemButton onClick={handleWhatsAppCall}>
               <ListItemIcon>
-                <OnDeviceTrainingIcon
-                  color="info"
-                  sx={{ marginRight: '5px', marginLeft: '5px' }}
+                <Phone
+                  sx={{
+                    color: '#ff4081',
+                    marginRight: '5px',
+                    marginLeft: '5px',
+                  }}
                 />
               </ListItemIcon>
               <Divider
@@ -212,7 +230,7 @@ const AboutMe = () => {
                 sx={{ borderColor: '#D74B76', marginRight: '20px' }}
               />
               <ListItemText
-                primary="+216 26 706 437"
+                primary={personaldata && personaldata.num}
                 sx={{ color: '#DDDDDD' }}
               />
             </ListItemButton>
@@ -220,9 +238,13 @@ const AboutMe = () => {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <MailOutlineIcon
+                <Email
                   color="primary"
-                  sx={{ marginRight: '5px', marginLeft: '5px' }}
+                  sx={{
+                    marginRight: '5px',
+                    marginLeft: '5px',
+                    color: '#f06292',
+                  }}
                 />
               </ListItemIcon>
               <Divider
@@ -231,7 +253,7 @@ const AboutMe = () => {
                 sx={{ borderColor: '#D74B76', marginRight: '20px' }}
               />
               <ListItemText
-                primary="safwendjebbi1234@gmail.com"
+                primary={personaldata && personaldata.email}
                 sx={{
                   color: '#DDDDDD',
                   whiteSpace: 'nowrap',
@@ -245,9 +267,13 @@ const AboutMe = () => {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <PinDropIcon
+                <LocationOn
                   color="secondary"
-                  sx={{ marginRight: '5px', marginLeft: '5px' }}
+                  sx={{
+                    marginRight: '5px',
+                    marginLeft: '5px',
+                    color: '#00e676',
+                  }}
                 />
               </ListItemIcon>
               <Divider
@@ -256,7 +282,7 @@ const AboutMe = () => {
                 sx={{ borderColor: '#D74B76', marginRight: '20px' }}
               />
               <ListItemText
-                primary="Tunisie, Ben Arous"
+                primary={personaldata && personaldata.country}
                 sx={{ color: '#DDDDDD' }}
               />
             </ListItemButton>
@@ -264,32 +290,36 @@ const AboutMe = () => {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <CakeIcon color="warning" sx={{ marginLeft: '5px' }} />
+                <Cake sx={{ marginLeft: '5px', color: '#9575cd' }} />
               </ListItemIcon>
               <Divider
                 orientation="vertical"
                 flexItem
                 sx={{ borderColor: '#D74B76', marginRight: '20px' }}
               />
-              <ListItemText primary="20/08/1994" sx={{ color: '#DDDDDD' }} />
+              <ListItemText
+                primary={personaldata && personaldata.birth}
+                sx={{ color: '#DDDDDD' }}
+              />
             </ListItemButton>
           </ListItem>
         </List>
         <Box
-          sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '20px',
+          }}
         >
           <Button
-            variant="outlined"
+            variant="contained"
             sx={{
-              height: '48px',
-              color: '#ECF0F1',
-              borderRadius: '10px',
-              borderColor: '#2A3E56',
-              backgroundColor: '#5A6A82',
+              background: 'linear-gradient(to right, #ff416c, #ff4b2b)',
+              borderRadius: 2,
+              textTransform: 'none',
+              fontWeight: 'bold',
               '&:hover': {
-                backgroundColor: '#2A3E56',
-                borderColor: '#D4AF37',
-                color: '#ECF0F1',
+                boxShadow: '0 0 12px #ff416c',
               },
             }}
             endIcon={<CloudDownloadIcon />}
