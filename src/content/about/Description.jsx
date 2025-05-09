@@ -6,15 +6,24 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Box,
+  Avatar,
 } from '@mui/material'
 import { motion } from 'framer-motion'
 
 import uiux from '../../image/uiux.png'
-import appdev from '../../image/appdev.png'
-import concep from '../../image/concep.png'
-import mobileapp from '../../image/mobileapp.png'
+import Spinner from '../../layout/Spinner'
 
-const Description = () => {
+const clientLogos = [
+  'https://via.placeholder.com/80x40?text=Logo+1',
+  'https://via.placeholder.com/80x40?text=Logo+2',
+  'https://via.placeholder.com/80x40?text=Logo+3',
+  'https://via.placeholder.com/80x40?text=Logo+4',
+  'https://via.placeholder.com/80x40?text=Logo+5',
+]
+const Description = ({ loading, description = {} }) => {
+  const { profdescription = '', whatido = [] } = description // Set default values
+
   const gridContainerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -26,211 +35,171 @@ const Description = () => {
   }
 
   return (
-    <motion.div
-      variants={gridContainerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <motion.div variants={gridItemVariants}>
-        <Typography
-          variant="h3"
-          component="h3"
-          align="left"
-          m={4}
-          mb={2}
-          sx={{ color: '#DDDDDD' }}
+    <>
+      {loading && !description ? (
+        <Spinner />
+      ) : (
+        <motion.div
+          variants={gridContainerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          About me
-        </Typography>
-      </motion.div>
-      <Divider sx={{ borderColor: '#D74B76' }} />
-      <motion.div variants={gridItemVariants}>
-        <Typography
-          variant="subtitle1"
-          component="h3"
-          align="left"
-          ml={5}
-          mt={1}
-          sx={{ color: '#B4B4B8' }}
-        >
-          Développeur Full Stack passionné par l’univer du web et doté d’une
-          curiosité pour cette metier.j’exerce cette metier depuis 2017 avec 3
-          ans d’experience. Je me suis spécialisé dans le développement frontend
-          ansi que le backend et je suis capable d’adopter avec tous les
-          environnements du développement. Je suis spécialisé sur les frameworks
-          Symfony, React Native, React , Python, Php et Nodejs.
-        </Typography>
-      </motion.div>
-      <motion.div variants={gridItemVariants}>
-        <Typography
-          variant="h3"
-          component="h3"
-          align="left"
-          m={4}
-          mb={2}
-          sx={{ color: '#DDDDDD' }}
-        >
-          What i do!
-        </Typography>
-      </motion.div>
-      <Divider sx={{ borderColor: '#D74B76', marginBottom: '10px' }} />
-      <Grid
-        container
-        spacing={4}
-        rowSpacing={1}
-        // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        mb={6.7}
-      >
-        <Grid item xs={12} sm={6}>
           <motion.div variants={gridItemVariants}>
-            <Card
-              sx={{
-                height: 170,
-                maxWidth: 345,
-                margin: 'auto',
-                opacity: '0.9',
-                display: 'flex',
-                padding: 2,
-                borderColor: '#2C3E50',
-                borderRadius: '10px',
-                bgcolor: '#34495E',
-              }}
-            >
-              <CardMedia
-                component="img"
-                sx={{ width: 100, height: 70 }}
-                image={uiux}
-                alt="UIUX"
+            {/* about title */}
+            <Box display="flex" alignItems="center" m={2}>
+              <Typography
+                variant="h4"
+                component="h2"
+                fontWeight="bold"
+                sx={{
+                  borderLeft: '4px solid #ff007f',
+                  pl: 2,
+                  fontSize: { xs: '1.8rem', md: '2.4rem' },
+                }}
+              >
+                About Me
+              </Typography>
+              <Box
+                sx={{
+                  height: 2,
+                  flexGrow: 1,
+                  backgroundColor: '#ff007f',
+                  ml: 2,
+                }}
               />
-              <CardContent>
-                <Typography
-                  variant="h5"
-                  component="div"
-                  sx={{ color: '#DDDDDD' }}
-                >
-                  UI/UX Design
-                </Typography>
-                <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </Card>
+            </Box>
           </motion.div>
-        </Grid>
-        <Grid item xs={12} sm={6}>
+          {/* <Divider sx={{ borderColor: '#D74B76' }} /> */}
+          {/* description about */}
           <motion.div variants={gridItemVariants}>
-            <Card
-              sx={{
-                height: 170,
-                maxWidth: 345,
-                margin: 'auto',
-                opacity: '0.9',
-                display: 'flex',
-                padding: 2,
-                borderColor: '#2C3E50',
-                borderRadius: '10px',
-                bgcolor: '#34495E',
-              }}
+            <Typography
+              variant="subtitle1"
+              component="h3"
+              align="left"
+              ml={5}
+              mt={1}
+              sx={{ color: 'gray' }}
             >
-              <CardMedia
-                component="img"
-                sx={{ width: 100, height: 70 }}
-                image={appdev}
-                alt="applicationn Web"
-              />
-              <CardContent>
-                <Typography
-                  variant="h5"
-                  component="div"
-                  sx={{ color: '#DDDDDD' }}
-                >
-                  App Development
-                </Typography>
-                <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </Card>
+              {profdescription}
+            </Typography>
           </motion.div>
-        </Grid>
-        <Grid item xs={12} sm={6}>
+          {/* what i do */}
           <motion.div variants={gridItemVariants}>
-            <Card
-              sx={{
-                height: 170,
-                maxWidth: 345,
-                margin: 'auto',
-                opacity: '0.9',
-                display: 'flex',
-                padding: 2,
-                borderColor: '#2C3E50',
-                borderRadius: '10px',
-                bgcolor: '#34495E',
-              }}
+            <Typography
+              variant="h3"
+              component="h3"
+              align="left"
+              m={4}
+              mb={2}
+              sx={{ color: '#DDDDDD' }}
             >
-              <CardMedia
-                component="img"
-                sx={{ width: 100, height: 70 }}
-                image={concep}
-                alt="conception"
-              />
-              <CardContent>
-                <Typography
-                  variant="h5"
-                  component="div"
-                  sx={{ color: '#DDDDDD' }}
-                >
-                  Conception & Managment
-                </Typography>
-                <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </Card>
+              What I do!
+            </Typography>
           </motion.div>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <motion.div variants={gridItemVariants}>
-            <Card
-              sx={{
-                height: 170,
-                maxWidth: 345,
-                margin: 'auto',
-                opacity: '0.9',
-                display: 'flex',
-                padding: 2,
-                borderColor: '#2C3E50',
-                borderRadius: '10px',
-                bgcolor: '#34495E',
-              }}
+          <Divider sx={{ border: '1px solid #ff007f', margin: '10px' }} />
+          {/* card service */}
+          <Grid container spacing={4} rowSpacing={1} mb={6.7}>
+            {whatido.length > 0 ? (
+              whatido.map((ele, index) => (
+                <Grid item xs={12} sm={6} key={index}>
+                  <motion.div variants={gridItemVariants}>
+                    <Card
+                      sx={{
+                        height: 170,
+                        maxWidth: 345,
+                        margin: 'auto',
+                        opacity: '0.9',
+                        display: 'flex',
+                        padding: 2,
+                        backgroundColor: '#1e1e1e',
+                        border: '1px solid #ffffff33',
+                        borderRadius: 3,
+                        p: 3,
+                        transition: '0.3s',
+                        '&:hover': {
+                          transform: 'translateY(-5px)',
+                          boxShadow: '0 4px 20px rgba(255,255,255,0.1)',
+                        },
+                      }}
+                    >
+                      <CardMedia
+                        component="img"
+                        sx={{ width: 100, height: 70 }}
+                        image={uiux}
+                        alt={ele.title}
+                      />
+
+                      <CardContent>
+                        <Typography
+                          variant="h5"
+                          component="div"
+                          sx={{ color: '#DDDDDD' }}
+                        >
+                          {ele.title}
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
+                          {ele.description}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              ))
+            ) : (
+              <Typography
+                variant="subtitle1"
+                component="p"
+                sx={{ color: '#B4B4B8', textAlign: 'center', mt: 2 }}
+              >
+                No data available.
+              </Typography>
+            )}
+          </Grid>
+          {/* client */}
+          <Grid
+            container
+            spacing={4}
+            rowSpacing={1}
+            mb={6.7}
+            sx={{ display: 'flex', flexDirection: 'column' }}
+          >
+            <Typography
+              variant="h3"
+              component="h3"
+              align="left"
+              m={4}
+              ml={10}
+              mb={2}
+              sx={{ color: '#DDDDDD' }}
             >
-              <CardMedia
-                component="img"
-                sx={{ width: 100, height: 70 }}
-                image={mobileapp}
-                alt="applicationn Mobile"
-              />
-              <CardContent>
-                <Typography
-                  variant="h5"
-                  component="div"
-                  sx={{ color: '#DDDDDD' }}
-                >
-                  Application Mobile
-                </Typography>
-                <Typography variant="body2" sx={{ color: '#B4B4B8' }}>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </Grid>
-      </Grid>
-    </motion.div>
+              My Client
+            </Typography>
+            <Box
+              display="flex"
+              flexWrap="wrap"
+              justifyContent="center"
+              alignItems="center"
+              gap={4}
+            >
+              {clientLogos.map((logo, index) => (
+                <Avatar
+                  key={index}
+                  src={logo}
+                  variant="rounded"
+                  sx={{
+                    width: 80,
+                    height: 40,
+                    backgroundColor: 'white',
+                    p: 1,
+                  }}
+                />
+              ))}
+            </Box>
+          </Grid>
+        </motion.div>
+      )}
+    </>
   )
 }
+
 export default Description
