@@ -1,7 +1,5 @@
 import React from 'react'
 import {
-  Avatar,
-  Box,
   Card,
   Container,
   Divider,

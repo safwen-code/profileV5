@@ -67,7 +67,7 @@ const MainContent = () => {
             )}
 
             {/* Main Content */}
-            <Item sx={{ bgcolor: '#2C3E50', color: 'white' }}>
+            <Item sx={{ bgcolor: '#111', color: 'white' }}>
               <Containers activeNavItem={activeNavItem} />
             </Item>
           </Grid>

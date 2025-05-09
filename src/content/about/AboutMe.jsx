@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Typewriter from 'typewriter-effect'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -13,7 +13,6 @@ import {
   List,
   Avatar,
   Box,
-  Card,
   Menu,
   MenuItem,
   Stack,
@@ -21,10 +20,6 @@ import {
 
 import WordIcon from '@mui/icons-material/Description'
 import PDFIcon from '@mui/icons-material/PictureAsPdf'
-import OnDeviceTrainingIcon from '@mui/icons-material/OnDeviceTraining'
-import MailOutlineIcon from '@mui/icons-material/MailOutline'
-import PinDropIcon from '@mui/icons-material/PinDrop'
-import CakeIcon from '@mui/icons-material/Cake'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
 import {
   Facebook,
@@ -33,7 +28,6 @@ import {
   Phone,
   LocationOn,
   Cake,
-  Download,
   Twitter,
 } from '@mui/icons-material'
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball' // placeholder for Dribbble

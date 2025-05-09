@@ -1,122 +1,208 @@
-import * as React from 'react'
-
+import React, { useState } from 'react'
 import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  CardActionArea,
+  Modal,
+  IconButton,
   Chip,
-  Stepper,
-  Step,
-  StepLabel,
-  StepContent,
   List,
   ListItem,
-  ListSubheader,
-  Typography,
+  Button,
+  ListItemText,
+  Backdrop,
+  Fade,
 } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import { motion } from 'framer-motion'
 
-import ModelTrainingIcon from '@mui/icons-material/ModelTraining'
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
-const VerticalLinearStepper = () => {
+const VerticalLinearStepper = ({ education }) => {
+  const [openModal, setOpenModal] = useState(false)
+  const [selectedEducation, setSelectedEducation] = useState(null)
+
+  const handleOpenModal = (edu) => {
+    if (edu.workFor && edu.workFor.length > 0) {
+      setSelectedEducation(edu)
+      setOpenModal(true)
+    }
+  }
+
+  const handleCloseModal = () => {
+    setOpenModal(false)
+    setSelectedEducation(null)
+  }
+
   return (
-    <>
-      <Stepper orientation="vertical">
-        <Step key={0} active={1} sx={{ color: '#B4B4B8' }}>
-          <StepLabel StepIconComponent={ModelTrainingIcon}>
-            <Typography component="span" sx={{ color: '#FFFFFF' }}>
-              Go My Code
-            </Typography>
-            <Chip label="October 2018, 2019" sx={{ color: '#DDDDDD' }} />
-          </StepLabel>
-          <StepContent
+    <Box>
+      {/* Title Typography centered above the cards */}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          mb: 3,
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 'bold',
+            textAlign: 'center',
+            fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' },
+            background: 'linear-gradient(to right, #4e79a7, #6a4c93)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          Education
+        </Typography>
+      </Box>
+
+      {/* Render Education as Cards in Column */}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 3,
+          px: { xs: 2, sm: 4 }, // Padding for better spacing on mobile
+        }}
+      >
+        {education.map((edu, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2 }}
+          >
+            <Card
+              sx={{
+                bgcolor: '#2C3E50',
+                color: '#FFFFFF',
+                borderRadius: '8px',
+                '&:hover': {
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+                },
+              }}
+            >
+              <CardActionArea onClick={() => handleOpenModal(edu)}>
+                <CardContent>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                    {edu.company}
+                  </Typography>
+                  <Typography variant="body2" sx={{ mb: 1 }}>
+                    {edu.titleformation}
+                  </Typography>
+                  {edu.date && (
+                    <Chip
+                      label={edu.date}
+                      sx={{
+                        bgcolor: '#6a4c93',
+                        color: '#FFFFFF',
+                        mt: 1,
+                      }}
+                    />
+                  )}
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </motion.div>
+        ))}
+      </Box>
+
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={openModal}>
+          <Box
             sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '80%',
+              maxWidth: '600px',
+              bgcolor: '#34495E',
+              color: '#FFFFFF',
+              borderRadius: 2,
+              boxShadow: 24,
+              p: 4,
+              outline: 'none',
               display: 'flex',
-              alignItems: 'start',
-              borderColor: '#D74B76',
+              flexDirection: 'column',
+              maxHeight: '80vh', // Restrict the height of the modal
+              overflowY: 'auto', // Add scrolling if content overflows
             }}
           >
-            <List
-              subheader={
-                <ListSubheader
-                  component="div"
-                  id="nested-list-subheader"
+            <IconButton
+              onClick={handleCloseModal}
+              sx={{
+                position: 'absolute',
+                top: 10,
+                right: 10,
+                color: '#FFFFFF',
+                zIndex: 1,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+
+            {selectedEducation && (
+              <>
+                <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
+                  {selectedEducation.company}
+                </Typography>
+                <Typography variant="body1" sx={{ mb: 3 }}>
+                  {selectedEducation.titleformation}
+                </Typography>
+                <Chip
+                  label={selectedEducation.date}
                   sx={{
-                    bgcolor: '#49243E',
-                    border: '1px solid #E2DFD0',
-                    borderRadius: '3px',
-                    color: '#B4B4B8',
+                    bgcolor: '#6a4c93',
+                    color: '#FFFFFF',
+                    mt: 1,
+                  }}
+                />
+                <List
+                  sx={{
+                    mt: 3,
+                    bgcolor: '#2C3E50',
+                    borderRadius: '4px',
+                    padding: '10px',
                   }}
                 >
-                  Instructeur Web
-                </ListSubheader>
-              }
-            >
-              <ListItem>
-                1. Conception et présentation de cours avancés en react et
-                javascript.
-              </ListItem>
-              <ListItem>
-                2. Encadrement et mentorat d'étudiants dans leur apprentissage
-                de la programmation JavaScript.
-              </ListItem>
-              <ListItem>
-                3. Enseignement des bases de mongodb et node js
-              </ListItem>
-            </List>
-          </StepContent>
-        </Step>
-        <Step key={1} active={1} sx={{ color: '#B4B4B8' }}>
-          <StepLabel StepIconComponent={SchoolOutlinedIcon}>
-            <Typography component="span" sx={{ color: '#FFFFFF' }}>
-              Téchnicien Supérieur En Informatique
-            </Typography>
-            <Chip label="2014 - 2017" sx={{ color: '#DDDDDD' }} />
-          </StepLabel>
-          <StepContent
-            sx={{
-              display: 'flex',
-              alignItems: 'start',
-              borderColor: '#D74B76',
-            }}
-          >
-            <List
-              subheader={
-                <ListSubheader
-                  component="div"
-                  id="nested-list-subheader"
+                  {selectedEducation.workFor &&
+                    selectedEducation.workFor.map((detail, index) => (
+                      <ListItem key={index} sx={{ color: '#ECF0F1' }}>
+                        <ListItemText primary={`${index + 1}. ${detail}`} />
+                      </ListItem>
+                    ))}
+                </List>
+                <Button
+                  onClick={handleCloseModal}
+                  variant="contained"
+                  color="secondary"
                   sx={{
-                    bgcolor: '#49243E',
-                    border: '1px solid #E2DFD0',
-                    borderRadius: '3px',
-                    color: '#B4B4B8',
+                    mt: 2,
+                    display: 'block',
+                    margin: '0 auto',
                   }}
                 >
-                  Développeur du Systéme Informatique
-                </ListSubheader>
-              }
-            >
-              <ListItem>
-                1. Etudier les notions de base de programmation et la logique
-                informatique.
-              </ListItem>
-              <ListItem>
-                2. Crée et manipuler des applicatin Web/Desktop à l'aide' des
-                framwork comme JS,PhP, Python ' .
-              </ListItem>
-              <ListItem>
-                3. développer un projet de fin d'étude pour aidée les étudiants
-                de consulter et télécharger leur cours '
-              </ListItem>
-            </List>
-          </StepContent>
-        </Step>
-        <Step key={2} active={1} sx={{ color: '#B4B4B8' }}>
-          <StepLabel StepIconComponent={SchoolOutlinedIcon}>
-            <Typography component="span" sx={{ color: '#FFFFFF' }}>
-              Baccalaureate informatique
-            </Typography>
-            <Chip label="October 2013, 2014" sx={{ color: '#DDDDDD' }} />
-          </StepLabel>
-        </Step>
-      </Stepper>
-    </>
+                  Close
+                </Button>
+              </>
+            )}
+          </Box>
+        </Fade>
+      </Modal>
+    </Box>
   )
 }
 

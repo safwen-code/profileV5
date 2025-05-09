@@ -201,27 +201,177 @@ const Skills = ({ props }) => {
             </Box>
           </Grid>
           <Grid item xs={12} md={4} sx={{ mt: { xs: 2, md: 2 } }}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: 1,
-                [theme.breakpoints.down('md')]: {
-                  mb: 4,
-                },
-                [theme.breakpoints.down('sm')]: {
-                  mb: 4,
-                },
-              }}
+            <motion.div
+              className="box"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 5, scale: 1 }}
             >
-              <Chip label="Postman" variant="outlined" color="secondary" />
-              <Chip label="VSCode" variant="outlined" color="secondary" />
-              <Chip label="Eclipse" variant="outlined" color="secondary" />
-              <Chip label="Jira" variant="outlined" color="secondary" />
-              <Chip label="Docker" variant="outlined" color="secondary" />
-              <Chip label="Git" variant="outlined" color="secondary" />
-              <Chip label="UML" variant="outlined" color="secondary" />
-            </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 1,
+                  [theme.breakpoints.down('md')]: {
+                    mb: 4,
+                  },
+                  [theme.breakpoints.down('sm')]: {
+                    mb: 4,
+                  },
+                }}
+              >
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip label="Postman" variant="outlined" color="secondary" />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip label="VSCode" variant="outlined" color="secondary" />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip
+                    label="DevEpress"
+                    variant="outlined"
+                    color="secondary"
+                  />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip label="Jira" variant="outlined" color="secondary" />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip label="flux" variant="outlined" color="secondary" />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip label="Git" variant="outlined" color="secondary" />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip label="Graphql" variant="outlined" color="secondary" />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip label="jwt" variant="outlined" color="secondary" />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip label="MVVM" variant="outlined" color="secondary" />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip label="Redux" variant="outlined" color="secondary" />
+                </motion.button>
+                <motion.button
+                  className="box"
+                  style={{
+                    background: 'transparent', // Transparent background for the button
+                    border: 'none', // Removes any default border
+                    cursor: 'pointer', // Pointer cursor for better UX
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Chip
+                    label="socket io"
+                    variant="outlined"
+                    color="secondary"
+                  />
+                </motion.button>
+              </Box>
+            </motion.div>
           </Grid>
         </Grid>
       </motion.div>
