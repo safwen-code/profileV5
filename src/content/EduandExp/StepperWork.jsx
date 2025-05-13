@@ -8,7 +8,6 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemText,
   Chip,
   Backdrop,
   Fade,
@@ -16,6 +15,7 @@ import {
 } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { motion } from 'framer-motion'
+import WorkIcon from '@mui/icons-material/Work'
 
 const Experience = () => {
   const [open, setOpen] = useState(false)
@@ -29,10 +29,10 @@ const Experience = () => {
       details: [
         'Participation au développement de CRM et CMS solutions, adapté aux besoins des clients.',
         "Conception et création d'un système MES dédié à la gestion et au suivi de la production :",
-        '- Surveillance et suivi de la production en temps réel.',
-        '- Automatisation de la génération de tickets pour les emballages et palettes.',
-        '- Analyse des rebuts, suivi des PPM (parties par million), analyse de Pareto et capacités de production.',
-        '- Garantie de la qualité fournisseur et client.',
+        '1. Surveillance et suivi de la production en temps réel.',
+        '2. Automatisation de la génération de tickets pour les emballages et palettes.',
+        '3. Analyse des rebuts, suivi des PPM (parties par million), analyse de Pareto et capacités de production.',
+        '4. Garantie de la qualité fournisseur et client.',
         'Technologies utilisées : Frontend (HTML, SASS, JavaScript, React), Backend (PHP, Node.js, PostgreSQL).',
       ],
     },
@@ -41,11 +41,11 @@ const Experience = () => {
       dates: '10-02-2020 / 27-11-21',
       role: 'Opérateur Machine',
       details: [
-        'Opérateur du Montage Timelec. Vérification du produit.',
-        'Assemblage du produit en utilisant le système FT bios.',
-        "Identification et gestion des QRQS en cas d'erreur.",
-        'Enregistrement des données sur la plateforme TRS.',
-        "Utilisation de la méthodologie LEAN pour accroître l'efficacité de l'équipe.",
+        '1. Opérateur du Montage Timelec. Vérification du produit.',
+        '2. Assemblage du produit en utilisant le système FT bios.',
+        "3. Identification et gestion des QRQS en cas d'erreur.",
+        '4. Enregistrement des données sur la plateforme TRS.',
+        "5. Utilisation de la méthodologie LEAN pour accroître l'efficacité de l'équipe.",
       ],
     },
   ]
@@ -76,12 +76,13 @@ const Experience = () => {
             fontWeight: 'bold',
             textAlign: 'center',
             fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' },
-            background: 'linear-gradient(to right, #4e79a7, #6a4c93)',
+            background: 'linear-gradient(to right, #ff4b2b, #ff416c)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
           }}
+          color="#ff4b2b"
         >
-          Experiences
+          <WorkIcon sx={{ mr: 1 }} /> Experiences
         </Typography>
       </Box>
 
@@ -102,11 +103,14 @@ const Experience = () => {
           >
             <Card
               sx={{
-                bgcolor: '#2C3E50',
-                color: '#FFFFFF',
-                borderRadius: '8px',
+                color: '#DDDDDD',
+                backgroundColor: '#1e1e1e',
+                border: '1px solid #ffffff33',
+                borderRadius: 3,
+                transition: '0.3s',
                 '&:hover': {
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 4px 20px rgba(255,255,255,0.1)',
                 },
               }}
               onClick={() => handleOpen(exp)}
@@ -121,8 +125,8 @@ const Experience = () => {
                 <Chip
                   label={exp.dates}
                   sx={{
-                    bgcolor: '#6a4c93',
-                    color: '#FFFFFF',
+                    background: 'linear-gradient(to right, #ff4b2b, #ff416c)',
+                    color: '#DDDDDD',
                     mt: 1,
                   }}
                 />
@@ -150,41 +154,62 @@ const Experience = () => {
               left: '50%',
               transform: 'translate(-50%, -50%)',
               width: '80%',
-              maxWidth: '500px',
-              bgcolor: 'background.paper',
+              maxWidth: '600px',
+              bgcolor: '#111',
+              color: '#FFFFFF',
+              borderRadius: 2,
               boxShadow: 24,
               p: 4,
-              borderRadius: 2,
               outline: 'none',
+              display: 'flex',
+              flexDirection: 'column',
+              maxHeight: '80vh', // Restrict the height of the modal
+              overflowY: 'auto', // Add scrolling if content overflows
             }}
           >
+            <IconButton
+              onClick={handleClose}
+              sx={{
+                position: 'absolute',
+                top: 10,
+                right: 10,
+                color: '#ff4b2b',
+                zIndex: 1,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
             {selectedWork && (
               <>
-                <Typography
-                  variant="h6"
-                  sx={{ mb: 2, color: 'primary.main', textAlign: 'center' }}
-                >
+                <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold' }}>
                   {selectedWork.company}
                 </Typography>
-                <Typography
-                  variant="subtitle1"
-                  sx={{ mb: 2, fontWeight: 'bold', textAlign: 'center' }}
-                >
+                <Typography variant="body1" sx={{ mb: 3 }}>
                   {selectedWork.role}
                 </Typography>
                 <Chip
                   label={selectedWork.dates}
                   sx={{
-                    display: 'block',
-                    margin: '0 auto',
+                    bgcolor: '#ff4b2b',
                     color: '#FFFFFF',
-                    bgcolor: '#1976D2',
-                    mb: 2,
+                    mt: 1,
                   }}
                 />
-                <List>
+                <List
+                  sx={{
+                    mt: 3,
+                    backgroundColor: '#1e1e1e',
+                    border: '1px solid #ffffff33',
+                    borderRadius: 3,
+                    padding: '10px',
+                    mb: 1,
+                  }}
+                >
                   {selectedWork.details.map((detail, index) => (
-                    <ListItem key={index} sx={{ padding: '0.5rem 0' }}>
+                    <ListItem
+                      key={index}
+                      sx={{ padding: '0.5rem 0', color: '#ECF0F1' }}
+                    >
                       {detail}
                     </ListItem>
                   ))}
@@ -192,10 +217,24 @@ const Experience = () => {
                 <Button
                   onClick={handleClose}
                   variant="contained"
-                  color="secondary"
-                  sx={{ mt: 2, display: 'block', margin: '0 auto' }}
+                  sx={{
+                    mt: 2,
+                    display: 'block',
+                    margin: '0 auto',
+                    bgcolor: '#ff4b2b',
+                    color: '#fff',
+                    boxShadow: '0 4px 15px rgba(255, 75, 43, 0.5)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: '#e04326',
+                      boxShadow: '0 6px 20px rgba(255, 75, 43, 0.6)',
+                    },
+                    '&:active': {
+                      boxShadow: '0 3px 10px rgba(255, 75, 43, 0.4)',
+                    },
+                  }}
                 >
-                  Fermer
+                  Close
                 </Button>
               </>
             )}
