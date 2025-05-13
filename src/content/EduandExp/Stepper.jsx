@@ -17,6 +17,8 @@ import {
 } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { motion } from 'framer-motion'
+import SchoolIcon from '@mui/icons-material/School'
+import WorkIcon from '@mui/icons-material/Work'
 
 const VerticalLinearStepper = ({ education }) => {
   const [openModal, setOpenModal] = useState(false)
@@ -49,13 +51,17 @@ const VerticalLinearStepper = ({ education }) => {
           variant="h4"
           sx={{
             fontWeight: 'bold',
-            textAlign: 'center',
             fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' },
-            background: 'linear-gradient(to right, #4e79a7, #6a4c93)',
+            background: 'linear-gradient(to right, #ff4b2b, #ff416c)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
+          color="#ff4b2b"
         >
+          <SchoolIcon sx={{ mr: 1 }} />
           Education
         </Typography>
       </Box>
@@ -78,11 +84,14 @@ const VerticalLinearStepper = ({ education }) => {
           >
             <Card
               sx={{
-                bgcolor: '#2C3E50',
-                color: '#FFFFFF',
-                borderRadius: '8px',
+                color: '#DDDDDD',
+                backgroundColor: '#1e1e1e',
+                border: '1px solid #ffffff33',
+                borderRadius: 3,
+                transition: '0.3s',
                 '&:hover': {
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 4px 20px rgba(255,255,255,0.1)',
                 },
               }}
             >
@@ -98,8 +107,9 @@ const VerticalLinearStepper = ({ education }) => {
                     <Chip
                       label={edu.date}
                       sx={{
-                        bgcolor: '#6a4c93',
-                        color: '#FFFFFF',
+                        background:
+                          'linear-gradient(to right, #ff4b2b, #ff416c)',
+                        color: '#DDDDDD',
                         mt: 1,
                       }}
                     />
