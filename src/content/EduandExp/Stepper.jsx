@@ -18,7 +18,6 @@ import {
 import CloseIcon from '@mui/icons-material/Close'
 import { motion } from 'framer-motion'
 import SchoolIcon from '@mui/icons-material/School'
-import WorkIcon from '@mui/icons-material/Work'
 
 const VerticalLinearStepper = ({ education }) => {
   const [openModal, setOpenModal] = useState(false)
@@ -139,7 +138,7 @@ const VerticalLinearStepper = ({ education }) => {
               transform: 'translate(-50%, -50%)',
               width: '80%',
               maxWidth: '600px',
-              bgcolor: '#34495E',
+              bgcolor: '#111',
               color: '#FFFFFF',
               borderRadius: 2,
               boxShadow: 24,
@@ -157,7 +156,7 @@ const VerticalLinearStepper = ({ education }) => {
                 position: 'absolute',
                 top: 10,
                 right: 10,
-                color: '#FFFFFF',
+                color: '#ff4b2b',
                 zIndex: 1,
               }}
             >
@@ -175,7 +174,7 @@ const VerticalLinearStepper = ({ education }) => {
                 <Chip
                   label={selectedEducation.date}
                   sx={{
-                    bgcolor: '#6a4c93',
+                    bgcolor: '#ff4b2b',
                     color: '#FFFFFF',
                     mt: 1,
                   }}
@@ -183,9 +182,11 @@ const VerticalLinearStepper = ({ education }) => {
                 <List
                   sx={{
                     mt: 3,
-                    bgcolor: '#2C3E50',
-                    borderRadius: '4px',
+                    backgroundColor: '#1e1e1e',
+                    border: '1px solid #ffffff33',
+                    borderRadius: 3,
                     padding: '10px',
+                    mb: 1,
                   }}
                 >
                   {selectedEducation.workFor &&
@@ -203,6 +204,7 @@ const VerticalLinearStepper = ({ education }) => {
                     mt: 2,
                     display: 'block',
                     margin: '0 auto',
+                    bgcolor: '#ff4b2b',
                   }}
                 >
                   Close
