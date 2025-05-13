@@ -72,6 +72,16 @@ const Skills = ({ props }) => {
     { name: 'angular', count: 50 },
   ]
 
+  const skillColors = {
+    html: '#1E90FF', // blue
+    css: '#2965f1', // CSS blue
+    js: '#f0db4f', // yellow
+    Dom: '#00cec9', // cyan
+    react: '#61DBFB', // React cyan
+    reactN: '#61DBFB',
+    vuejs: '#42b883', // Vue green
+    angular: '#dd0031', // Angular red
+  }
   let skills = [
     { name: 'Php', progress: progress1 },
     { name: 'Node js', progress: progress2 },
@@ -86,38 +96,47 @@ const Skills = ({ props }) => {
         animate="visible"
       >
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          {softskill.map((skill, index) => (
-            <Grid
-              key={index}
-              item
-              xs={6}
-              sm={4}
-              md={3}
-              lg={3}
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <motion.div variants={gridItemVariants}>
-                <AnimatedProgressProvider values={[0, 20, 40, 50, skill.count]}>
-                  {(percentage) => (
-                    <div className="skill-card">
-                      <CircularProgressbar
-                        value={percentage}
-                        text={`${percentage}%`}
-                        styles={buildStyles({
-                          pathTransitionDuration: 0.15,
-                        })}
-                      />
-                      <p className="skill-name">{skill.name}</p>
-                    </div>
-                  )}
-                </AnimatedProgressProvider>
-              </motion.div>
-            </Grid>
-          ))}
+          {softskill.map((skill, index) => {
+            const color = skillColors[skill.name.toLowerCase()] || '#ff4b2b' // fallback to coral
+
+            return (
+              <Grid
+                key={index}
+                item
+                xs={6}
+                sm={4}
+                md={3}
+                lg={3}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <motion.div variants={gridItemVariants}>
+                  <AnimatedProgressProvider
+                    values={[0, 20, 40, 50, skill.count]}
+                  >
+                    {(percentage) => (
+                      <div className="skill-card">
+                        <CircularProgressbar
+                          value={percentage}
+                          text={`${percentage}%`}
+                          styles={buildStyles({
+                            pathColor: color,
+                            textColor: color,
+                            trailColor: '#444',
+                            pathTransitionDuration: 0.15,
+                          })}
+                        />
+                        <p className="skill-name">{skill.name}</p>
+                      </div>
+                    )}
+                  </AnimatedProgressProvider>
+                </motion.div>
+              </Grid>
+            )
+          })}
         </Grid>
       </motion.div>
       <Divider sx={{ borderColor: '#D74B76' }} />
