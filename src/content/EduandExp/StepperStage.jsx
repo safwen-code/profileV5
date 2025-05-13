@@ -14,9 +14,12 @@ import {
   Modal,
   Backdrop,
   Fade,
+  IconButton,
 } from '@mui/material'
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined'
 import { motion } from 'framer-motion'
+
+import CloseIcon from '@mui/icons-material/Close'
 
 // Data
 const internship = [
@@ -66,13 +69,20 @@ const StepperWork = () => {
         <Stepper orientation="vertical">
           {internship.map((item, index) => (
             <Step key={index} active={1}>
-              <StepLabel StepIconComponent={WorkOutlineOutlinedIcon}>
+              <StepLabel
+                StepIconComponent={WorkOutlineOutlinedIcon}
+                sx={{ color: '#ff4b2b' }}
+              >
                 <Typography component="span" sx={{ color: '#FFFFFF' }}>
                   {item.company}
                 </Typography>
                 <Chip
                   label={item.date}
-                  sx={{ color: '#DDDDDD', marginLeft: '8px' }}
+                  sx={{
+                    bgcolor: '#ff4b2b',
+                    color: '#FFFFFF',
+                    marginLeft: '8px',
+                  }}
                 />
               </StepLabel>
               <StepContent>
@@ -81,10 +91,11 @@ const StepperWork = () => {
                     <ListSubheader
                       component="div"
                       sx={{
-                        color: '#ECF0F1',
-                        bgcolor: '#34495E',
-                        borderRadius: '4px',
-                        border: '1px solid #E2DFD0',
+                        color: '#DDDDDD',
+                        backgroundColor: '#1e1e1e',
+                        border: '1px solid #ffffff33',
+                        borderRadius: 2,
+                        transition: '0.3s',
                         mb: 1,
                       }}
                     >
@@ -100,9 +111,16 @@ const StepperWork = () => {
                   {item.workFor.length > 2 && (
                     <Button
                       variant="outlined"
-                      color="primary"
                       onClick={() => handleOpen(item)}
-                      sx={{ mt: 1 }}
+                      sx={{
+                        mt: 1,
+                        color: '#ff4b2b',
+                        borderColor: '#ff4b2b',
+                        '&:hover': {
+                          borderColor: '#e04326',
+                          backgroundColor: 'rgba(255, 75, 43, 0.08)',
+                        },
+                      }}
                     >
                       Voir plus
                     </Button>
@@ -133,18 +151,32 @@ const StepperWork = () => {
               transform: 'translate(-50%, -50%)',
               width: '80%',
               maxWidth: '500px',
-              bgcolor: 'background.paper',
+              bgcolor: '#111',
+              color: '#FFFFFF',
               boxShadow: 24,
               p: 4,
               borderRadius: 2,
               outline: 'none',
             }}
           >
+            <IconButton
+              onClick={handleClose}
+              sx={{
+                position: 'absolute',
+                top: 10,
+                right: 10,
+                color: '#ff4b2b',
+                zIndex: 1,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+
             {selectedInternship && (
               <>
                 <Typography
                   variant="h6"
-                  sx={{ mb: 2, color: 'primary.main', textAlign: 'center' }}
+                  sx={{ mb: 2, fontWeight: 'bold', textAlign: 'center' }}
                 >
                   {selectedInternship.company}
                 </Typography>
@@ -154,7 +186,16 @@ const StepperWork = () => {
                 >
                   {selectedInternship.titleformation}
                 </Typography>
-                <List>
+                <List
+                  sx={{
+                    mt: 3,
+                    backgroundColor: '#1e1e1e',
+                    border: '1px solid #ffffff33',
+                    borderRadius: 3,
+                    padding: '10px',
+                    mb: 1,
+                  }}
+                >
                   {selectedInternship.workFor.map((work, index) => (
                     <ListItem key={index} sx={{ padding: '0.5rem 0' }}>
                       {work}
@@ -164,10 +205,24 @@ const StepperWork = () => {
                 <Button
                   onClick={handleClose}
                   variant="contained"
-                  color="secondary"
-                  sx={{ mt: 2, display: 'block', margin: '0 auto' }}
+                  sx={{
+                    mt: 2,
+                    display: 'block',
+                    margin: '0 auto',
+                    bgcolor: '#ff4b2b',
+                    color: '#fff',
+                    boxShadow: '0 4px 15px rgba(255, 75, 43, 0.5)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: '#e04326',
+                      boxShadow: '0 6px 20px rgba(255, 75, 43, 0.6)',
+                    },
+                    '&:active': {
+                      boxShadow: '0 3px 10px rgba(255, 75, 43, 0.4)',
+                    },
+                  }}
                 >
-                  Fermer
+                  Close
                 </Button>
               </>
             )}
