@@ -23,6 +23,7 @@ const Skills = ({ props }) => {
   const [progress1, setProgress1] = useState(0)
   const [progress2, setProgress2] = useState(0)
   const [progress3, setProgress3] = useState(0)
+  const [progress4, setProgress4] = useState(0)
 
   useEffect(() => {
     const timer1 = setInterval(() => {
@@ -55,10 +56,21 @@ const Skills = ({ props }) => {
       })
     }, 50)
 
+    const timer4 = setInterval(() => {
+      setProgress4((prevProgress) => {
+        if (prevProgress >= 50) {
+          clearInterval(timer4)
+          return 50
+        }
+        return prevProgress + 1
+      })
+    }, 50)
+
     return () => {
       clearInterval(timer1)
       clearInterval(timer2)
       clearInterval(timer3)
+      clearInterval(timer4)
     }
   }, [])
   let softskill = [
@@ -86,7 +98,14 @@ const Skills = ({ props }) => {
     { name: 'Php', progress: progress1 },
     { name: 'Node js', progress: progress2 },
     { name: 'C Sharp', progress: progress3 },
+    { name: 'java', progress: progress4 },
   ]
+  const linearColors = {
+    Php: '#8892BF', // purple-ish
+    'Node js': '#3C873A', // green
+    'C Sharp': '#68217A', // violet
+    java: '#f89820', // black
+  }
   return (
     <>
       {/* CircularProgressbar fixed */}
@@ -153,6 +172,7 @@ const Skills = ({ props }) => {
             alignItems: 'flex-start',
           }}
         >
+          {/* brogresseve bar */}
           <Grid item xs={12} md={8}>
             <Box
               sx={{
@@ -164,61 +184,70 @@ const Skills = ({ props }) => {
                 },
               }}
             >
-              {skills.map((skill, index) => (
-                <Grid
-                  container
-                  item
-                  alignItems="center"
-                  key={index}
-                  sx={{
-                    flexWrap: 'nowrap',
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: '#DDDDDD',
-                      minWidth: '80px',
-                    }}
-                    mt={1}
+              {skills.map((skill, index) => {
+                const color = linearColors[skill.name] || '#ff4b2b'
+
+                return (
+                  <Grid
+                    container
+                    item
+                    alignItems="center"
+                    key={index}
+                    sx={{ flexWrap: 'nowrap' }}
                   >
-                    {skill.name}
-                  </Typography>
-                  <Box sx={{ flexGrow: 1 }}>
-                    <LinearProgress
-                      variant="determinate"
-                      value={skill.progress}
+                    <Typography
+                      variant="body2"
+                      sx={{ color: '#DDDDDD', minWidth: '80px' }}
+                      mt={1}
+                    >
+                      {skill.name}
+                    </Typography>
+                    <Box sx={{ flexGrow: 1 }}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={skill.progress}
+                        sx={{
+                          marginTop: 3,
+                          marginBottom: 2,
+                          height: 10,
+                          borderRadius: 5,
+                          backgroundColor: '#2e2e2e',
+                          '& .MuiLinearProgress-bar': {
+                            backgroundColor: color,
+                            transition: 'box-shadow 0.3s ease-in-out',
+                          },
+                          '&:hover .MuiLinearProgress-bar': {
+                            boxShadow: `0 0 8px ${color}`,
+                          },
+                          width: '100%',
+                          [theme.breakpoints.down('md')]: {
+                            width: '24rem',
+                          },
+                          [theme.breakpoints.down('sm')]: {
+                            width: '11rem',
+                          },
+                        }}
+                      />
+                    </Box>
+                    <Typography
+                      variant="body2"
+                      mt={1}
                       sx={{
-                        marginTop: 3,
-                        marginBottom: 2,
-                        height: 10,
-                        borderRadius: 5,
-                        width: '100%',
-                        [theme.breakpoints.down('md')]: {
-                          width: '24rem',
-                        },
-                        [theme.breakpoints.down('sm')]: {
-                          width: '11rem',
-                        },
+                        color: '#DDDDDD',
+                        marginLeft: 1,
+                        minWidth: '40px',
+                        textAlign: 'right',
                       }}
-                    />
-                  </Box>
-                  <Typography
-                    variant="body2"
-                    mt={1}
-                    sx={{
-                      color: '#DDDDDD',
-                      marginLeft: 1,
-                      minWidth: '40px',
-                      textAlign: 'right',
-                    }}
-                  >
-                    {`${skill.progress}%`}
-                  </Typography>
-                </Grid>
-              ))}
+                    >
+                      {`${skill.progress}%`}
+                    </Typography>
+                  </Grid>
+                )
+              })}
             </Box>
           </Grid>
+
+          {/* ships */}
           <Grid item xs={12} md={4} sx={{ mt: { xs: 2, md: 2 } }}>
             <motion.div
               className="box"
