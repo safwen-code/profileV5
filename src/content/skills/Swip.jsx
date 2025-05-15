@@ -75,7 +75,7 @@ function SwipeableTextMobileStepper() {
           alignItems: 'center',
           height: 50,
           pl: 2,
-          bgcolor: '#3B536D',
+          background: 'linear-gradient(to right, #ff416c, #ff4b2b)',
           borderRadius: '10px',
         }}
       >
@@ -203,7 +203,10 @@ function SwipeableTextMobileStepper() {
         <MobileStepper
           steps={maxSteps}
           position="static"
-          sx={{ bgcolor: '#3B536D', borderRadius: '10px' }}
+          sx={{
+            background: 'linear-gradient(to right, #ff416c, #ff4b2b)',
+            borderRadius: '10px',
+          }}
           activeStep={activeStep}
         />
       </Box>
