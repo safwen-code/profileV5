@@ -10,6 +10,8 @@ import phone from '../../image/phone.mp4'
 import mail from '../../image/mail.mp4'
 import { useTheme } from '@mui/material/styles'
 import { motion } from 'framer-motion'
+import EmailIcon from '@mui/icons-material/Email'
+import PhoneIcon from '@mui/icons-material/Phone'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -85,28 +87,29 @@ const Contact = () => {
     visible: { opacity: 1, y: 0 },
   }
   return (
-    <>
-      {/* /* head  thing*/}
+    <Box
+      sx={{
+        bgcolor: '#121212',
+        color: '#fff',
+        p: { xs: 2, sm: 4, md: 6 },
+        borderRadius: 3,
+        maxWidth: '900px',
+        mx: 'auto',
+      }}
+    >
+      {/* contact typo */}
       <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          m: 4,
-          mb: 2,
-        }}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
       >
-        <Typography
-          variant="h3"
-          component="h3"
-          align="left"
-          sx={{ color: '#DDDDDD' }}
-        >
-          Contact Me
+        <Typography variant="h4" fontWeight="bold" gutterBottom sx={{ m: 2 }}>
+          Contact
         </Typography>
-        <Divider sx={{ flex: 1, borderColor: '#D74B76', ml: 2 }} />
+        <Divider sx={{ bgcolor: '#ff007f', height: 3, width: 300, mb: 4 }} />
       </Box>
-
-      {/* /* info  thing*/}
+      {/* email and adress info */}
       <motion.div
         variants={gridContainerVariants}
         initial="hidden"
@@ -114,211 +117,196 @@ const Contact = () => {
       >
         <motion.div variants={gridItemVariants}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <Item
+            <Grid item xs={12} md={6}>
+              <Paper
                 sx={{
-                  bgcolor: '#34495E',
-                  border: '1px solid #E2DFD0',
+                  bgcolor: '#1e1e1e',
+                  p: 2,
+                  borderRadius: 2,
                   display: 'flex',
+                  flexDirection: 'column',
+                  gap: 1,
                 }}
               >
-                {' '}
-                <Grid>
-                  <RoundedVideo src={phone} />
-                </Grid>
-                <Grid
-                  sx={{
-                    marginLeft: '20px',
-                    [theme.breakpoints.down('sm')]: {
-                      marginLeft: '1px',
-                    },
-                  }}
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  gap={1}
+                  color="whitesmoke"
                 >
-                  <Typography component={'h3'} sx={{ color: '#DDDDDD' }}>
-                    Phone N° :
+                  <PhoneIcon />
+                  <Typography variant="subtitle1" fontWeight="bold">
+                    Phone :
                   </Typography>
-                  <Typography
-                    component="span"
-                    sx={{ color: '#DDDDDD', marginLeft: '30px' }}
-                  >
-                    +216 26 406 437
-                  </Typography>
-                </Grid>
-              </Item>
+                </Box>
+                <Typography color="whitesmoke">+452 666 386</Typography>
+              </Paper>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <Item
+
+            <Grid item xs={12} md={6}>
+              <Paper
                 sx={{
-                  bgcolor: '#34495E',
-                  border: '1px solid #E2DFD0',
+                  bgcolor: '#1e1e1e',
+                  p: 2,
+                  borderRadius: 2,
                   display: 'flex',
+                  flexDirection: 'column',
+                  gap: 1,
                 }}
               >
-                {' '}
-                <Grid>
-                  <RoundedVideo src={mail} />
-                </Grid>
-                <Grid
-                  sx={{
-                    marginLeft: '10px',
-                    flexDirection: 'column',
-                    [theme.breakpoints.down('sm')]: {
-                      marginLeft: '1px',
-                    },
-                  }}
-                >
+                <Box display="flex" alignItems="center" gap={1}>
+                  <EmailIcon />
                   <Typography
-                    component="h3"
-                    sx={{ color: '#DDDDDD', marginRight: '120px' }}
+                    variant="subtitle1"
+                    fontWeight="bold"
+                    color="whitesmoke"
                   >
                     Email :
                   </Typography>
-                  <Typography
-                    component="span"
-                    sx={{ color: '#DDDDDD', marginLeft: '30px' }}
-                  >
-                    safwendjebbi1234@gmail.com
-                  </Typography>
-                </Grid>
-              </Item>
+                </Box>
+                <Typography color="whitesmoke">ibthemes@gmail.com</Typography>
+              </Paper>
             </Grid>
           </Grid>
         </motion.div>
       </motion.div>
-
+      {/* form control */}
       <motion.div
         className="box"
         initial={{ x: '100%' }}
         animate={{ x: 0 }}
         transition={{ type: 'spring', stiffness: 100, damping: 10 }}
       >
-        <form ref={formRef}>
-          <Grid spacing={2} pt={2} mt={1} direction="column">
-            <Divider sx={{ borderColor: '#D74B76' }} />
-            <Grid item xs={12} sm={6} md={8} mt={3}>
-              <TextField
-                sx={{
-                  width: '20rem',
-                  '& .MuiInputBase-root.MuiInput-root': {
-                    color: '#DDDDDD',
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: '#DDDDDD',
-                  },
-                }}
-                error={name === '' && errorField}
-                helperText={errorField && name === '' ? 'Name is required' : ''}
-                required
-                id="standard-read-only-input"
-                label="your name please"
-                variant="standard"
-                margin="dense"
-                name="name"
-                value={name}
-                onChange={ChangeHundel}
-                style={{ marginRight: '5px' }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={8} mt={3}>
-              <TextField
-                sx={{
-                  width: '20rem',
-                  '& .MuiInputBase-root.MuiInput-root': {
-                    color: '#DDDDDD',
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: '#DDDDDD',
-                  },
-                }}
-                error={email === '' && errorField}
-                helperText={
-                  errorField && email === '' ? 'Email is required' : ''
-                }
-                required
-                id="standard-read-only-input"
-                label="your email please"
-                variant="standard"
-                margin="dense"
-                name="email"
-                value={email}
-                color="secondary"
-                onChange={ChangeHundel}
-              />{' '}
-            </Grid>
-            <Grid item xs={12} sm={6} md={8} mt={3}>
-              <TextField
-                sx={{
-                  width: '20rem',
-                  '& .MuiInputBase-root': {
-                    color: '#DDDDDD',
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: '#DDDDDD',
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: '#DDDDDD',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#AAAAAA',
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: '#888888',
-                    },
-                  },
-                }}
-                error={message === '' && errorField}
-                helperText={
-                  errorField && message === '' ? 'Message is required' : ''
-                }
-                required
-                label="message please"
-                id="fullWidth"
-                margin="dense"
-                multiline
-                rows={4}
-                color="success"
-                name="message"
-                value={message}
-                onChange={ChangeHundel}
-              />
-            </Grid>
-          </Grid>
-        </form>
-        <Button
+        <Box
           sx={{
-            marginTop: '10px',
-            marginBottom: '5px',
-            color: '#DDDDDD',
-            borderColor: '#DDDDDD',
-            '&:hover': {
-              color: '#A91D3A', // Text color on hover
-              borderColor: '#A91D3A', // Border color on hover
-              backgroundColor: 'rgba(255, 255, 255, 0.08)',
-            },
+            mt: 4,
+            p: 3,
+            border: '1px solid #2e2e2e',
+            borderRadius: 2,
           }}
-          variant="outlined"
-          endIcon={<SendIcon />}
-          onClick={submitHundel}
         >
-          Send Email
-        </Button>
+          <Typography variant="h6" gutterBottom>
+            I'm always open to discussing product{' '}
+            <Box component="span" fontWeight="bold">
+              design work or partnerships.
+            </Box>
+          </Typography>
+          <Box
+            component="form"
+            noValidate
+            autoComplete="off"
+            sx={{ mt: 2 }}
+            ref={formRef}
+          >
+            <TextField
+              fullWidth
+              required
+              sx={{
+                '& .MuiInputBase-root.MuiInput-root': {
+                  color: '#DDDDDD',
+                },
+                '& .MuiInputLabel-root': {
+                  color: '#DDDDDD',
+                },
+              }}
+              error={name === '' && errorField}
+              helperText={errorField && name === '' ? 'Name is required' : ''}
+              label="Name"
+              variant="standard"
+              margin="dense"
+              name="name"
+              value={name}
+              onChange={ChangeHundel}
+            />
+            <TextField
+              fullWidth
+              required
+              label="Email"
+              variant="standard"
+              margin="normal"
+              sx={{
+                '& .MuiInputBase-root.MuiInput-root': {
+                  color: '#DDDDDD',
+                },
+                '& .MuiInputLabel-root': {
+                  color: '#DDDDDD',
+                },
+              }}
+              error={email === '' && errorField}
+              helperText={errorField && email === '' ? 'Email is required' : ''}
+              id="standard-read-only-input"
+              name="email"
+              value={email}
+              color="secondary"
+              onChange={ChangeHundel}
+            />
+            <TextField
+              fullWidth
+              required
+              label="Message"
+              variant="standard"
+              margin="normal"
+              multiline
+              rows={4}
+              sx={{
+                '& .MuiInputBase-root': {
+                  color: '#DDDDDD',
+                },
+                '& .MuiInputLabel-root': {
+                  color: '#DDDDDD',
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: '#DDDDDD',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#AAAAAA',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#888888',
+                  },
+                },
+              }}
+              error={message === '' && errorField}
+              helperText={
+                errorField && message === '' ? 'Message is required' : ''
+              }
+              id="fullWidth"
+              color="success"
+              name="message"
+              value={message}
+              onChange={ChangeHundel}
+            />
+            <Button
+              variant="contained"
+              sx={{
+                background: 'linear-gradient(to right, #ff416c, #ff4b2b)',
+                borderRadius: 2,
+                textTransform: 'none',
+                fontWeight: 'bold',
+                '&:hover': {
+                  boxShadow: '0 0 12px #ff416c',
+                },
+              }}
+            >
+              Submit
+            </Button>
+          </Box>
+          {alertVisible && (
+            <Alert
+              severity="success"
+              style={{
+                backgroundColor: '#f0f8ea',
+                color: '#4caf50',
+                fontWeight: 'bold',
+              }}
+            >
+              Thank you for your email! We'll get back to you soon.
+            </Alert>
+          )}
+        </Box>
       </motion.div>
-      {/* /* form   thing*/}
-
-      {alertVisible && (
-        <Alert
-          severity="success"
-          style={{
-            backgroundColor: '#f0f8ea',
-            color: '#4caf50',
-            fontWeight: 'bold',
-          }}
-        >
-          Thank you for your email! We'll get back to you soon.
-        </Alert>
-      )}
-    </>
+    </Box>
   )
 }
 
