@@ -125,7 +125,17 @@ const AboutMe = () => {
       <Box sx={{ zIndex: 1, margin: 2 }}>
         <List sx={style} component="div" aria-label="mailbox folders">
           <ListItem
-            sx={{ color: '#ECF0F1', bgcolor: '#222', borderRadius: '4px' }}
+            sx={{
+              color: '#DDDDDD',
+              backgroundColor: ' rgba(0, 0, 0, 0.55)',
+              border: '1px solid #1e1e1e',
+              borderRadius: 3,
+              transition: '0.3s',
+              '&:hover': {
+                transform: 'translateY(-5px)',
+                boxShadow: '0 4px 20px rgba(255,255,255,0.1)',
+              },
+            }}
           >
             <ListItemText
               sx={{
@@ -148,9 +158,16 @@ const AboutMe = () => {
           <ListItem
             divider
             sx={{
-              bgcolor: '#222',
-              borderRadius: '4px',
-              margin: '10px 10px 10px 0',
+              backgroundColor: ' rgba(0, 0, 0, 0.55)',
+              border: '1px solid #1e1e1e',
+              borderRadius: 3,
+              transition: '0.3s',
+              '&:hover': {
+                transform: 'translateY(-5px)',
+                boxShadow: '0 4px 20px rgba(255,255,255,0.1)',
+              },
+              mt: 1,
+              mb: 1,
             }}
           >
             <ListItemText
@@ -202,9 +219,15 @@ const AboutMe = () => {
           sx={{
             border: 1,
             borderColor: '#2C3E50',
-            borderRadius: '10px',
             marginTop: '10px',
-            bgcolor: '#222',
+            backgroundColor: ' rgba(0, 0, 0, 0.55)',
+            border: '1px solid #1e1e1e',
+            borderRadius: 3,
+            transition: '0.3s',
+            '&:hover': {
+              transform: 'translateY(-5px)',
+              boxShadow: '0 4px 20px rgba(255,255,255,0.1)',
+            },
           }}
         >
           <ListItem disablePadding>

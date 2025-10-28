@@ -23,7 +23,7 @@ const MainContent = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md')) // Mobile detection
 
   return (
-    <Container fixed maxWidth="xl">
+    <Container fixed>
       {/* Display Navbar on mobile */}
       {isMobile && (
         <Navbar
