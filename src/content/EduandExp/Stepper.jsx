@@ -168,7 +168,10 @@ const VerticalLinearStepper = ({ education }) => {
                 <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
                   {selectedEducation.company}
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 3 }}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{ mb: 3, fontWeight: 'bold' }}
+                >
                   {selectedEducation.titleformation}
                 </Typography>
                 <Chip
@@ -199,12 +202,21 @@ const VerticalLinearStepper = ({ education }) => {
                 <Button
                   onClick={handleCloseModal}
                   variant="contained"
-                  color="secondary"
                   sx={{
                     mt: 2,
                     display: 'block',
                     margin: '0 auto',
                     bgcolor: '#ff4b2b',
+                    color: '#fff',
+                    boxShadow: '0 4px 15px rgba(255, 75, 43, 0.5)',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: '#e04326',
+                      boxShadow: '0 6px 20px rgba(255, 75, 43, 0.6)',
+                    },
+                    '&:active': {
+                      boxShadow: '0 3px 10px rgba(255, 75, 43, 0.4)',
+                    },
                   }}
                 >
                   Close

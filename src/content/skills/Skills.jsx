@@ -161,7 +161,6 @@ const Skills = ({ props }) => {
       <Divider sx={{ borderColor: '#D74B76' }} />
 
       {/* pogrsseve bar fixed */}
-
       <motion.div variants={gridContainerVariants}>
         <Grid
           container

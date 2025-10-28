@@ -5,8 +5,8 @@
 }
 
 .skill-card {
-  width: 6rem;
-  height: 8rem;
+  width: 4rem;
+  height: 5rem;
   background-color: #1e1e1e; /* No quotes */
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;

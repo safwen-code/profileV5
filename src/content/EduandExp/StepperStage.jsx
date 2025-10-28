@@ -65,6 +65,7 @@ const StepperWork = () => {
       animate={{ x: 0 }}
       transition={{ type: 'spring', stiffness: 100, damping: 10 }}
     >
+      {/* stage stepper  */}
       <Box sx={{ margin: '0 auto', maxWidth: '600px', padding: '1rem' }}>
         <Stepper orientation="vertical">
           {internship.map((item, index) => (
